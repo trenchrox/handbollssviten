@@ -46,6 +46,8 @@ a{color:var(--red)}
 .actions .ghost{color:var(--rail-dim);border-color:transparent;padding-left:0}
 .actions a.home{font:600 14px var(--sans);padding:11px 12px;color:#fff;border:1px solid #4a4b52;text-decoration:none;white-space:nowrap}
 .actions a.home:hover{border-color:var(--yellow);color:var(--yellow)}
+.actions a.pdf{font:600 14px var(--sans);padding:11px 12px;color:#fff;border:1px solid #4a4b52;text-decoration:none;text-align:left}
+.actions a.pdf:hover{border-color:var(--yellow);color:var(--yellow)}
 .ver{margin:14px 0 0;font-size:12px;color:var(--rail-dim)}
 .rail nav .row{display:flex;align-items:center}
 .rail nav .row a{flex:1}
@@ -234,7 +236,7 @@ ul.sq li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:
   .rail nav a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;padding:8px 10px;font-size:14px}
   .rail nav a.on{border-bottom-color:var(--yellow)}
   .actions{display:contents}
-  .actions button,.ver{display:none}
+  .actions button,.actions a.pdf,.ver{display:none}
   .actions a.home{flex:none;padding:8px 12px}
   main{margin-left:0;padding:8px 0 60px}
   html{scroll-padding-top:70px}
@@ -323,7 +325,7 @@ ul.sq li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:
 <nav aria-label="Kapitel"><ol><li data-li="grundposition"><div class="row"><a href="#grundposition" data-ch="grundposition"><span>1</span>Grundposition</a><button type="button" class="tog" aria-expanded="false" aria-controls="sub-grundposition" aria-label="Visa avsnitt i Grundposition">+</button></div><ol class="sub" id="sub-grundposition"><li><a href="#grundposition-grundstallningen" data-sub="grundposition-grundstallningen">Grundställningen</a></li><li><a href="#grundposition-anpassa-efter-kroppen" data-sub="grundposition-anpassa-efter-kroppen">Anpassa efter kroppen</a></li><li><a href="#grundposition-placering-och-forflyttning" data-sub="grundposition-placering-och-forflyttning">Placering och förflyttning</a></li><li><a href="#grundposition-placering-efter-skottlage" data-sub="grundposition-placering-efter-skottlage">Placering efter skottläge</a></li><li><a href="#grundposition-vanliga-fel-ratta-direkt" data-sub="grundposition-vanliga-fel-ratta-direkt">Vanliga fel – rätta direkt</a></li><li><a href="#grundposition-det-basta-fran-gamla-och-nya-skolan" data-sub="grundposition-det-basta-fran-gamla-och-nya-skolan">Det bästa från gamla och nya skolan</a></li></ol></li><li data-li="traningsupplagg"><div class="row"><a href="#traningsupplagg" data-ch="traningsupplagg"><span>2</span>Träningsupplägg</a><button type="button" class="tog" aria-expanded="false" aria-controls="sub-traningsupplagg" aria-label="Visa avsnitt i Träningsupplägg">+</button></div><ol class="sub" id="sub-traningsupplagg"><li><a href="#traningsupplagg-passmallen" data-sub="traningsupplagg-passmallen">Passmallen</a></li><li><a href="#traningsupplagg-fyra-pass-som-roterar" data-sub="traningsupplagg-fyra-pass-som-roterar">Fyra pass som roterar</a></li><li><a href="#traningsupplagg-skottuppvarmning-i-fem-steg" data-sub="traningsupplagg-skottuppvarmning-i-fem-steg">Skottuppvärmning i fem steg</a></li></ol></li><li data-li="avancerad"><div class="row"><a href="#avancerad" data-ch="avancerad"><span>3</span>Avancerad nivå</a><button type="button" class="tog" aria-expanded="false" aria-controls="sub-avancerad" aria-label="Visa avsnitt i Avancerad nivå">+</button></div><ol class="sub" id="sub-avancerad"><li><a href="#avancerad-benspark" data-sub="avancerad-benspark">Benspark</a></li><li><a href="#avancerad-glidraddning" data-sub="avancerad-glidraddning">Glidräddning</a></li></ol></li><li data-li="kul"><div class="row"><a href="#kul" data-ch="kul"><span>4</span>Kul i mål</a><button type="button" class="tog" aria-expanded="false" aria-controls="sub-kul" aria-label="Visa avsnitt i Kul i mål">+</button></div><ol class="sub" id="sub-kul"><li><a href="#kul-lekar-tillsammans" data-sub="kul-lekar-tillsammans">Lekar tillsammans</a></li><li><a href="#kul-trana-i-par-hjalp-varandra" data-sub="kul-trana-i-par-hjalp-varandra">Träna i par – hjälp varandra</a></li><li><a href="#kul-peppa-varandra" data-sub="kul-peppa-varandra">Peppa varandra</a></li><li><a href="#kul-mental-installning" data-sub="kul-mental-installning">Mental inställning</a></li><li><a href="#kul-tva-malvakter-samarbete-inte-konkurrens" data-sub="kul-tva-malvakter-samarbete-inte-konkurrens">Två målvakter – samarbete, inte konkurrens</a></li><li><a href="#kul-fler-i-mal" data-sub="kul-fler-i-mal">Fler i mål</a></li><li><a href="#kul-flowball-rolig-uppvarmning" data-sub="kul-flowball-rolig-uppvarmning">Flowball – rolig uppvärmning</a></li><li><a href="#kul-reaktionsstjarnan-fanga-ratt-farg" data-sub="kul-reaktionsstjarnan-fanga-ratt-farg">Reaktionsstjärnan – fånga rätt färg</a></li></ol></li><li data-li="trygg"><div class="row"><a href="#trygg" data-ch="trygg"><span>5</span>Trygg i mål</a><button type="button" class="tog" aria-expanded="false" aria-controls="sub-trygg" aria-label="Visa avsnitt i Trygg i mål">+</button></div><ol class="sub" id="sub-trygg"><li><a href="#trygg-handerna-som-skold" data-sub="trygg-handerna-som-skold">Händerna som sköld</a></li></ol></li><li data-li="vid-sidan"><div class="row"><a href="#vid-sidan" data-ch="vid-sidan"><span>6</span>Vid sidan av målet</a></div></li><li data-li="ovningsbank"><div class="row"><a href="#ovningsbank" data-ch="ovningsbank"><span>7</span>Övningsbank</a></div></li><li data-li="hemma"><div class="row"><a href="#hemma" data-ch="hemma"><span>8</span>Träna hemma</a></div></li></ol></nav>
 <div class="actions">
 <a class="home" id="navHome" href="https://trenchrox.github.io/handbollssviten/">⌂ Hem</a>
-<button type="button" id="print-all">Skriv ut kompendiet</button>
+<a class="pdf" id="print-all" href="Malvaktstraning_unga_malvakter_v3.pdf" target="_blank" rel="noopener">Skriv ut kompendiet (PDF)</a>
 <button type="button" id="print-hemma">Skriv ut Träna hemma</button>
 </div>
 <p class="ver">Version 1.0 – fungerar offline</p>
@@ -511,10 +513,6 @@ ul.sq li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:
   });
 
 
-  document.getElementById("print-all").addEventListener("click", function () {
-    document.body.classList.remove("only-hemma");
-    window.print();
-  });
   function printHemma() { document.body.classList.add("only-hemma"); window.print(); }
   document.getElementById("print-hemma").addEventListener("click", printHemma);
   document.querySelectorAll(".print-hemma").forEach(function (b) { b.addEventListener("click", printHemma); });

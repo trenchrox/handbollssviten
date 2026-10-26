@@ -42,7 +42,10 @@
   header h1 span { color: var(--accent); }
   header p { margin: 8px 0 0; color: var(--ink-dim); }
   .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid a.card:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 140px; }
+  }
   a.card {
     display: flex; flex-direction: column; gap: 14px; min-height: 168px; padding: 22px;
     background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
@@ -105,6 +108,16 @@
       </span>
       <span class="name">Matchanalys</span>
       <span class="desc">Se vad laget behöver träna på utifrån matchrapporterna.</span>
+    </a>
+
+    <a class="card" href="malvaktskompendium_html_v1.html">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 8h26a4 4 0 0 1 4 4v28H12a4 4 0 0 1-4-4z"/><path d="M8 36a4 4 0 0 1 4-4h26M16 16h14M16 22h10"/>
+        </svg>
+      </span>
+      <span class="name">Målvaktskompendium</span>
+      <span class="desc">Målvaktsträning för unga målvakter att läsa och ta med.</span>
     </a>
   </nav>
 

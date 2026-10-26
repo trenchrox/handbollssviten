@@ -43,10 +43,10 @@
     color: inherit; text-decoration: none;
     transition: transform .12s ease, border-color .12s ease, background .12s ease;
   }
-  a.card:hover { border-color: var(--accent); background: var(--panel-hi); }
+  a.card:hover { border-color: var(--c, var(--accent)); background: var(--panel-hi); }
   a.card:active { transform: scale(.98); }
-  a.card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .ico { width: 52px; height: 52px; color: var(--accent); }
+  a.card:focus-visible { outline: 3px solid var(--c, var(--accent)); outline-offset: 3px; }
+  .ico { width: 52px; height: 52px; color: var(--c, var(--accent)); }
   .ico svg { width: 100%; height: 100%; display: block; }
   .name { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
   .desc { color: var(--ink-dim); font-size: 15px; margin-top: -8px; }
@@ -61,7 +61,7 @@
   </header>
 
   <nav class="grid" aria-label="Appar">
-    <a class="card" href="https://trenchrox.github.io/handball_g_trk/handball_g_trk_ipad.html">
+    <a class="card" style="--c: #ffd60a" href="https://trenchrox.github.io/handball_g_trk/handball_g_trk_ipad.html">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="6" y="8" width="36" height="30" rx="3"/><path d="M6 17h36M16 8v9M32 8v9M16 38v-8h16v8"/><circle cx="24" cy="26" r="3"/>
@@ -71,7 +71,7 @@
       <span class="desc">Följ målvaktens räddningar och skott match för match.</span>
     </a>
 
-    <a class="card" href="https://trenchrox.github.io/teambuilder-handboll/">
+    <a class="card" style="--c: #0a84ff" href="https://trenchrox.github.io/teambuilder-handboll/">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="16" cy="16" r="6"/><circle cx="34" cy="18" r="5"/><path d="M5 38c0-7 5-12 11-12s11 5 11 12M29 28c6-2 14 1 14 10"/>
@@ -81,7 +81,7 @@
       <span class="desc">Bygg trupper och lag för träning och cuper.</span>
     </a>
 
-    <a class="card" href="https://trenchrox.github.io/playbook-handboll/playbook.html">
+    <a class="card" style="--c: #30d158" href="https://trenchrox.github.io/playbook-handboll/playbook.html">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="6" y="6" width="36" height="36" rx="3"/><path d="M16 6c0 8 16 8 16 0M10 34l10-8 6 4 12-12"/><path d="M33 18h5v5"/>
@@ -91,7 +91,7 @@
       <span class="desc">Rita spelmönster och spela upp dem steg för steg.</span>
     </a>
 
-    <a class="card" href="https://trenchrox.github.io/match_summary/">
+    <a class="card" style="--c: #c9a7ff" href="https://trenchrox.github.io/match_summary/">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 40V8M8 40h34"/><rect x="14" y="26" width="6" height="10" rx="1"/><rect x="25" y="18" width="6" height="18" rx="1"/><rect x="36" y="10" width="6" height="26" rx="1"/>
@@ -101,7 +101,7 @@
       <span class="desc">Se vad laget behöver träna på utifrån matchrapporterna.</span>
     </a>
 
-    <a class="card" href="malvaktskompendium_html_v1.html">
+    <a class="card" style="--c: #e0405f" href="malvaktskompendium_html_v1.html">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 8h26a4 4 0 0 1 4 4v28H12a4 4 0 0 1-4-4z"/><path d="M8 36a4 4 0 0 1 4-4h26M16 16h14M16 22h10"/>

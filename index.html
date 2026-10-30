@@ -29,8 +29,8 @@
   }
   main { width: 100%; max-width: 860px; }
   header { text-align: center; margin-bottom: 32px; }
-  header h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
-  header h1 span { color: var(--accent); }
+  header h1 { margin: 0; line-height: 0; }
+  header h1 img { width: min(420px, 80%); height: auto; display: inline-block; }
   header p { margin: 8px 0 0; color: var(--ink-dim); }
   .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 640px) {
@@ -59,7 +59,7 @@
 <body>
 <main>
   <header>
-    <h1>Handbolls<span>sviten</span></h1>
+    <h1><img src="logo.webp" alt="Handbollssviten" width="1100" height="474"></h1>
     <p>Välj app</p>
   </header>
 

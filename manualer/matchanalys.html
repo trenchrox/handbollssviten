@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Matchanalys – manual</title>
+<style>
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  :root { --accent: #6d3fc0; --ink: #1b1b1f; --grey: #5a5a63; --line: #dcd3ee; --tint: #f4f0fb; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; color: var(--ink); font: 400 11pt/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header.top { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 18px; }
+  header.top .kicker { color: var(--accent); font-weight: 700; font-size: 10pt; letter-spacing: .08em; text-transform: uppercase; }
+  header.top h1 { margin: 2px 0 2px; font-size: 26pt; line-height: 1.1; }
+  header.top p { margin: 0; color: var(--grey); }
+  h2 { font-size: 15pt; color: var(--accent); margin: 22px 0 6px; break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 14px 0 4px; break-after: avoid; }
+  p { margin: 0 0 8px; }
+  ul, ol { margin: 0 0 8px; padding-left: 20px; }
+  li { margin: 2px 0; }
+  .box { background: var(--tint); border-left: 4px solid var(--accent); padding: 8px 12px; margin: 10px 0; break-inside: avoid; }
+  .box p:last-child { margin-bottom: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; break-inside: avoid; }
+  th, td { text-align: left; vertical-align: top; padding: 5px 8px; border: 1px solid var(--line); font-size: 10pt; }
+  th { background: var(--tint); }
+  b.ui { font-weight: 700; }
+  footer.end { margin-top: 24px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--grey); font-size: 9pt; }
+</style>
+<style>
+.mbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;gap:8px;align-items:center;background:#1c1c1e;padding:10px 14px;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.mbar a{color:#fff;text-decoration:none;border:1px solid #4a4b52;padding:8px 12px;white-space:nowrap}
+.mbar a:hover{border-color:#ffd60a;color:#ffd60a}
+.mbar .sp{flex:1}
+.mbar a.dl{background:#ffd60a;color:#000;border-color:#ffd60a}
+.mbar a.dl:hover{background:#fff;border-color:#fff;color:#000}
+@media screen{
+  body{box-sizing:border-box;max-width:900px;margin:0 auto!important;padding:66px 16px 48px}
+  img,svg,table{max-width:100%}
+}
+@media screen and (max-width:640px){
+  table{display:block;max-width:100%;overflow-x:auto}
+  .cols,.two{grid-template-columns:1fr!important}
+}
+@media (max-width:480px){.mbar .long{display:none}.mbar{padding:8px 10px;gap:6px}.mbar a{padding:8px 10px}}
+@media print{.mbar{display:none}}</style>
+</head>
+<body>
+<div class="mbar"><a href="../index.html">⌂ Hem</a><a href="../manualer.html">← Manualer</a><span class="sp"></span><a class="dl" href="matchanalys-manual.pdf" download><span class="long">⬇ Ladda ner </span>PDF</a></div>
+
+<header class="top">
+  <div class="kicker">Handbollssviten</div>
+  <h1>Matchanalys</h1>
+  <p>Manual för appen Match Summary (version 1.4). Knappar och menyval står i <b class="ui">fet stil</b>.</p>
+</header>
+
+<h2>Vad appen gör</h2>
+<p>Du klistrar in dina matchrapporter, precis så som du redan skriver dem. Appen delar upp texten i meningar och föreslår för varje mening vad den handlar om. Du bekräftar eller ändrar förslaget. När du har granskat får du en överblick över vad laget behöver träna på: de senaste veckorna, per säsong och över alla säsonger, och du kan jämföra två säsonger.</p>
+<div class="box"><p><b>Grundregeln:</b> appen föreslår, du bestämmer. All statistik räknas bara på det du har bekräftat. Allt ligger lokalt på din enhet. Det finns inget konto, och inget skickas någonstans.</p></div>
+
+<h2>Menyn</h2>
+<table>
+  <tr><th>Menyval</th><th>Vad du gör där</th></tr>
+  <tr><td><b class="ui">Ny rapport</b></td><td>Väljer säsong, nivå och helg, klistrar in en rapport och delar upp den.</td></tr>
+  <tr><td><b class="ui">Granska</b></td><td>Går igenom meningarna och bekräftar utfall och fokusområde. Ett märke visar hur många meningar som är ogranskade.</td></tr>
+  <tr><td><b class="ui">Överblick</b></td><td>Ser vad laget behöver träna på och vilka styrkor som finns.</td></tr>
+  <tr><td><b class="ui">Jämför säsonger</b></td><td>Ställer två säsonger bredvid varandra.</td></tr>
+  <tr><td><b class="ui">Inställningar</b></td><td>Lag, språkmodell, fokusområden och backup.</td></tr>
+  <tr><td><b class="ui">Hem</b></td><td>Tar dig tillbaka till Handbollssvitens startsida.</td></tr>
+</table>
+<p>Överst i menyn ligger lagets namn och logga. Med pennan byter du namn och logga.</p>
+
+<h2>1. Kom igång</h2>
+<ol>
+  <li>Öppna <b class="ui">Ny rapport</b>. Första gången står det <b class="ui">Skapa första säsongen</b>. Tryck på knappen, så skapas en säsong som passar dagens datum, till exempel <b class="ui">Skapa säsong 2026/27</b>.</li>
+  <li>Skapa en nivå med <b class="ui">Ny nivå</b>, till exempel "Nivå 3". Nivån är den serienivå rapporten gäller.</li>
+  <li>Välj eller skapa en helg med <b class="ui">Ny helg…</b>. Helgen är datumet rapporten hör till.</li>
+</ol>
+<p>Ligger dagens datum utanför alla säsonger får du ett meddelande om det, och väljer själv säsong.</p>
+
+<h2>2. Ny rapport</h2>
+<ol>
+  <li>Välj <b class="ui">Säsong</b>, <b class="ui">Nivå</b> och helg.</li>
+  <li>Klistra in rapporten i textrutan.</li>
+  <li>Tryck <b class="ui">Dela upp</b>. Appen visar vilka matcher den hittade, hur många meningar varje match fick, och en rad med <b class="ui">Spelarnoteringar (utanför analysen)</b>.</li>
+  <li>Tryck <b class="ui">Gå till Granska</b>.</li>
+</ol>
+<h3>Så delas texten upp</h3>
+<ul>
+  <li>Rader med motståndare och eller "nivå N" blir matchrubriker. Text före första rubriken hamnar under <b class="ui">Utan matchrubrik</b>.</li>
+  <li>Meningar delas vid punkt, utropstecken, frågetecken och radbrytning. En mening med "men" delas i två delar.</li>
+  <li>Punktlistor där raden börjar med ett namn markeras som spelarnoteringar och hålls utanför analysen.</li>
+  <li>Emojis tas bort inför analysen men finns kvar i originaltexten.</li>
+</ul>
+<div class="box"><p><b>Skyddade uppgifter:</b> meningar om hälsa, skador, sjukdom, mat, frånvaro och familj sparas aldrig. De ersätts med ▮ i den sparade texten och tas inte med i exporten. Appen visar <b class="ui">Uteslutna: hälsa, frånvaro, familj (sparas inte)</b> när något har uteslutits.</p></div>
+<p>Under <b class="ui">Senaste rapporter</b> ser du tidigare rapporter. Du kan ändra en rapports nivå eller ta bort den. <b class="ui">Ta bort rapport?</b> tar bort rapporten med alla dess matcher och meningar från analysen, och det går inte att ångra.</p>
+
+<h2>3. Granska</h2>
+<p>Till vänster ligger originaltexten. Varje mening är färgad efter utfall, och <b>streckad betyder ej granskad</b>. Välj en mening, så visas en panel till höger.</p>
+<h3>I panelen väljer du</h3>
+<table>
+  <tr><th>Fält</th><th>Val</th></tr>
+  <tr><td><b class="ui">Utfall</b></td><td><b class="ui">Behov</b> (något laget behöver träna på), <b class="ui">Styrka</b>, <b class="ui">Kontext</b> (meningar som varken är ett behov eller en styrka, till exempel bakgrund – appen väljer Kontext när inget annat passar) eller <b class="ui">Spelare</b>.</td></tr>
+  <tr><td><b class="ui">Fokusområde</b></td><td>Appen föreslår de tre mest troliga. Välj ett, välj <b class="ui">Annat</b> eller <b class="ui">Välj område…</b>, eller skapa ett eget område direkt.</td></tr>
+  <tr><td><b class="ui">Grad</b></td><td>Hur mycket meningen väger: <b class="ui">1 · Lite</b>, <b class="ui">2 · Tydligt</b> eller <b class="ui">3 · Mycket</b>. Förvalt är 2.</td></tr>
+</table>
+<p>Tryck <b class="ui">Bekräfta → nästa</b> när meningen är klar, eller <b class="ui">Avvisa</b> om den inte ska räknas. Tryck <b class="ui">Visa varför</b> om du vill se vad förslaget bygger på: till exempel "liknar N bekräftade meningar", ordregler eller nyckelord.</p>
+<p>När allt är granskat står <b class="ui">Allt granskat.</b> Gå då vidare med <b class="ui">Till Överblick</b>, och exportera gärna en backup (<b class="ui">Säkra arbetet: exportera backup</b>).</p>
+<h3>Meningar om en spelare</h3>
+<p>Spelarmeningar hålls utanför statistiken. Vill du ändå använda en av dem, tryck <b class="ui">Gör om till lagobservation…</b> och skriv om meningen som en observation om laget, utan spelaren (<b class="ui">Egen formulering (lagobservation)</b>).</p>
+<h3>Förslagen blir bättre med tiden</h3>
+<p>Varje mening du bekräftar eller avvisar sparas som ett exempel, bara på den här enheten. Nästa förslag tar hänsyn till dem. Utan språkmodell (se Inställningar) bygger förslagen på ordregler och nyckelord.</p>
+
+<h2>4. Överblick</h2>
+<p>Välj <b class="ui">Period</b> (senaste veckorna), <b class="ui">Säsong</b> eller <b class="ui">Totalt</b>. Statistiken räknas bara på bekräftade meningar.</p>
+<table>
+  <tr><th>Del</th><th>Visar</th></tr>
+  <tr><td><b class="ui">Träna på nu</b></td><td>Topplista över områden med behov, med stapel, trend (<b class="ui">Nämns oftare</b>, <b class="ui">Nämns mer sällan</b> eller <b class="ui">Ungefär som tidigare</b>) och i hur många matcher området nämns.</td></tr>
+  <tr><td><b class="ui">Styrkor</b></td><td>Samma sak för områden som är styrkor.</td></tr>
+  <tr><td><b class="ui">Värmekarta: områden × helger</b></td><td>Hur ofta varje område nämns, helg för helg.</td></tr>
+  <tr><td><b class="ui">Motsägelser</b></td><td>Områden som är en styrka i en match och ett behov i en annan på samma nivå.</td></tr>
+  <tr><td><b class="ui">Möjligt nytt område</b></td><td>Är ännu inte byggt. Appen visar en förklarande ruta.</td></tr>
+  <tr><td><b class="ui">Ogranskade i kön</b></td><td>Antal meningar som väntar på granskning.</td></tr>
+</table>
+<p>Tryck på en siffra för att se meningarna bakom den. Trendvisning kräver tillräckligt underlag, annars står det <b class="ui">För lite underlag för trend</b>.</p>
+
+<h2>5. Jämför säsonger</h2>
+<p>Välj två säsonger (<b class="ui">Tidigare säsong</b> och <b class="ui">Senare säsong</b>). Appen jämför <b>andelar av matcher</b>, inte antal, så att en säsong med fler matcher inte ser sämre ut. Varje område får en status:</p>
+<table>
+  <tr><td><b class="ui">Löst</b></td><td>Behov tidigare, men inte längre.</td></tr>
+  <tr><td><b class="ui">Kvarstår</b></td><td>Behov i båda säsongerna.</td></tr>
+  <tr><td><b class="ui">Nytt</b></td><td>Behov bara i den senare säsongen.</td></tr>
+  <tr><td><b class="ui">Tappat</b></td><td>Var en styrka i den tidigare säsongen, men är det inte i den senare.</td></tr>
+</table>
+<p>Längst ner i vyn förklaras statusarna under rubriken <b class="ui">Så läses statusen</b>. Du måste ha minst två säsonger (<b class="ui">Två säsonger behövs.</b>) och bekräftade meningar i dem, annars står det <b class="ui">Granska rapporterna först.</b></p>
+
+<h2>6. Inställningar</h2>
+<h3>Lag</h3>
+<p>Visar lagets logga, namn och ID. Byt namn och logga med pennan överst i menyn.</p>
+<h3>Språkmodell</h3>
+<p>Modellen gör förslagen bättre. Den är cirka 60 MB och laddas ner en gång med <b class="ui">Ladda ner språkmodell</b>. Den kräver att appen öppnas från en webbadress. Öppnar du filen direkt från disken får du en förklaring i stället. Utan modellen fungerar appen ändå, med enklare förslag.</p>
+<p>Modellen lär sig ingenting själv. Det som anpassas efter ditt lag är dina bekräftade och avvisade meningar, som bara sparas lokalt. Med <b class="ui">Ta bort språkmodellen</b> raderas bara modellen, aldrig dina rapporter eller exempel.</p>
+<h3>Fokusområden</h3>
+<p>Här ser du alla områden. Tryck på ett för att byta namn, ändra beskrivning och nyckelord eller göra det aktivt eller inaktivt. Inaktiva områden finns kvar i historiken. Med <b class="ui">+ Nytt fokusområde</b> skapar du ett eget, med namn, kategori, beskrivning och nyckelord (kommaseparerade, används för förslag när modellen inte är nedladdad).</p>
+<h3>Backup</h3>
+<ul>
+  <li><b class="ui">Exportera backup</b> sparar en fil med alla rapporter, meningar, säsonger och områden för laget.</li>
+  <li><b class="ui">Importera backup</b> läser in en fil. På en tom enhet återställs allt. På en enhet med data frågar appen om du vill <b class="ui">Slå ihop backup?</b>, och det som är nyare på enheten behålls. En fil från ett annat lag stoppas.</li>
+  <li>Appen påminner med en rad överst när det finns arbete som inte ligger i någon backup och det gått tre dagar sedan senaste. <b class="ui">Senare</b> skjuter upp påminnelsen ett dygn.</li>
+</ul>
+
+<h2>Tips och vanliga frågor</h2>
+<ul>
+  <li><b>Förslagen är dåliga i början.</b> Det är normalt. Ju fler meningar du bekräftar, desto bättre blir de. Ladda gärna ner språkmodellen.</li>
+  <li><b>Jag ser inte den senaste versionen.</b> Appen sparar sig själv för offline-bruk. Hård-ladda om sidan, eller stäng appen helt och öppna den igen. På en iPad: svep bort appen och öppna den på nytt.</li>
+  <li><b>Kan jag tappa data?</b> Webbläsaren kan rensa lagrad data om sidan inte används på länge. Exportera därför en backup regelbundet och spara filen utanför enheten.</li>
+  <li><b>Appen vet inte vem som har skrivit eller granskat något.</b> Det finns ingen användarhantering.</li>
+</ul>
+
+<footer class="end">Matchanalys (Match Summary) · Handbollssviten</footer>
+</body>
+</html>

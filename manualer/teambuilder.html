@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Teambuilder v15 – handbok</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt; line-height: 1.5; color: #16161a; background: #fff; }
+
+  /* ---------- Titel ---------- */
+  .title { border-bottom: 3px solid #0a84ff; padding-bottom: 14px; margin-bottom: 6px; }
+  .title h1 { font-size: 26pt; margin: 0; letter-spacing: -0.01em; }
+  .title h1 b { color: #0a84ff; }
+  .title .sub { font-size: 11pt; color: #55555c; margin-top: 4px; }
+  .title .meta { font-size: 8.5pt; color: #85858c; margin-top: 10px; letter-spacing: 0.04em;
+    text-transform: uppercase; }
+
+  /* ---------- Innehåll ---------- */
+  .toc { margin: 18px 0 26px; column-count: 2; column-gap: 22px; font-size: 9.5pt; }
+  .toc div { break-inside: avoid; color: #33333a; padding: 1.5px 0; }
+  .toc b { color: #0a84ff; display: inline-block; width: 18px; }
+
+  /* ---------- Sektioner ---------- */
+  h2 { font-size: 13pt; margin: 26px 0 8px; padding-bottom: 5px;
+    border-bottom: 1px solid #dcdce2; break-after: avoid; }
+  h2 .n { color: #0a84ff; margin-right: 8px; }
+  h3 { font-size: 10.5pt; margin: 16px 0 5px; break-after: avoid; }
+  p { margin: 0 0 8px; }
+  .lead { color: #47474e; margin-bottom: 12px; }
+
+  ol { margin: 0 0 10px; padding-left: 20px; }
+  ol li { margin-bottom: 5px; break-inside: avoid; }
+  ul { margin: 0 0 10px; padding-left: 18px; }
+  ul li { margin-bottom: 3px; break-inside: avoid; }
+  b.ui { background: #eef4ff; border: 1px solid #cfe0ff; border-radius: 4px;
+    padding: 0 4px; font-weight: 600; white-space: nowrap; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 9pt;
+    background: #f3f3f6; border-radius: 3px; padding: 0 3px; }
+
+  /* ---------- Rutor ---------- */
+  .tip, .warn, .privacy { border-radius: 6px; padding: 9px 12px; margin: 10px 0;
+    font-size: 9.5pt; break-inside: avoid; }
+  .tip { background: #f2f7ff; border-left: 3px solid #0a84ff; }
+  .warn { background: #fff6ed; border-left: 3px solid #f08c1b; }
+  .privacy { background: #f1f8f2; border-left: 3px solid #2a9d4e; }
+  .tip .lbl, .warn .lbl, .privacy .lbl { font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; font-size: 8pt; display: block; margin-bottom: 2px; }
+  .tip .lbl { color: #0a5fc0; } .warn .lbl { color: #a35a04; } .privacy .lbl { color: #1d7a3a; }
+
+  /* ---------- Tabell ---------- */
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 9.5pt;
+    break-inside: avoid; }
+  th { text-align: left; border-bottom: 1.5px solid #16161a; padding: 5px 8px 5px 0; }
+  td { border-bottom: 1px solid #e6e6ec; padding: 5px 8px 5px 0; vertical-align: top; }
+  td:first-child { white-space: nowrap; font-weight: 600; width: 30%; }
+
+  .page-break { break-before: page; }
+  footer { margin-top: 26px; border-top: 1px solid #dcdce2; padding-top: 8px;
+    font-size: 8.5pt; color: #85858c; }
+</style>
+<style>
+.mbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;gap:8px;align-items:center;background:#1c1c1e;padding:10px 14px;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.mbar a{color:#fff;text-decoration:none;border:1px solid #4a4b52;padding:8px 12px;white-space:nowrap}
+.mbar a:hover{border-color:#ffd60a;color:#ffd60a}
+.mbar .sp{flex:1}
+.mbar a.dl{background:#ffd60a;color:#000;border-color:#ffd60a}
+.mbar a.dl:hover{background:#fff;border-color:#fff;color:#000}
+@media screen{
+  body{box-sizing:border-box;max-width:900px;margin:0 auto!important;padding:66px 16px 48px}
+  img,svg,table{max-width:100%}
+}
+@media screen and (max-width:640px){
+  table{display:block;max-width:100%;overflow-x:auto}
+  .cols,.two{grid-template-columns:1fr!important}
+}
+@media (max-width:480px){.mbar .long{display:none}.mbar{padding:8px 10px;gap:6px}.mbar a{padding:8px 10px}}
+@media print{.mbar{display:none}}</style>
+</head>
+<body>
+<div class="mbar"><a href="../index.html">⌂ Hem</a><a href="../manualer.html">← Manualer</a><span class="sp"></span><a class="dl" href="teambuilder-handbok.pdf" download><span class="long">⬇ Ladda ner </span>PDF</a></div>
+
+<div class="title">
+  <h1>Team<b>builder</b> – handbok</h1>
+  <div class="sub">Steg för steg: från tom app till utskrivna lag.</div>
+  <div class="meta">Version v15 · oktober 2026 · fristående HTML-app för ungdomshandboll</div>
+</div>
+
+<div class="toc">
+  <div><b>1</b> Installera och första starten</div>
+  <div><b>2</b> Lägg in truppen</div>
+  <div><b>3</b> Klistra in en trupplista</div>
+  <div><b>4</b> Positioner och truppvyer</div>
+  <div><b>5</b> Bedömningar bakom PIN</div>
+  <div><b>6</b> Relationer</div>
+  <div><b>7</b> Spelarsamtal</div>
+  <div><b>8</b> Ledarstab</div>
+  <div><b>9</b> Skapa träningsgrupper</div>
+  <div><b>10</b> Justera en färdig indelning</div>
+  <div><b>11</b> Skriv ut och spara som PDF</div>
+  <div><b>12</b> Cup</div>
+  <div><b>13</b> Skicka ett cuplag på granskning</div>
+  <div><b>14</b> Historik</div>
+  <div><b>15</b> Inställningar</div>
+  <div><b>16</b> Backup, delning och byte av enhet</div>
+  <div><b>17</b> Integritet – vad appen inte gör</div>
+  <div><b>18</b> Om något strular</div>
+</div>
+
+<h2><span class="n">1</span>Installera och första starten</h2>
+<p class="lead">Teambuilder är <em>en enda fil</em>: <code>teambuilder-v15.html</code>. Inget konto, ingen
+installation, ingen internetanslutning. Appen körs i webbläsaren på den digitala enhet du väljer –
+dator, pekplatta eller telefon – och all data stannar på just den enheten.</p>
+
+<ol>
+  <li>Lägg filen där din enhet kommer åt den – mejl till dig själv, en molnmapp eller en webbadress.</li>
+  <li>Öppna filen i webbläsaren. Chrome, Edge och Safari fungerar alla.</li>
+  <li>Vill du slippa adressfältet: på mobil och pekplatta lägger du appen på hemskärmen via
+    dela-ikonen → <b class="ui">Lägg till på hemskärmen</b>. På dator räcker ett bokmärke, och
+    helskärm med <b class="ui">F11</b> (Windows) eller <b class="ui">⌃⌘F</b> (Mac).</li>
+  <li>I välkomstrutan fyller du i det du vill ha:
+    <ul>
+      <li><b class="ui">Truppens namn</b> – t.ex. <em>P12 IFK Handboll</em>. Syns i menyn och på utskrifter.</li>
+      <li><b class="ui">Laglogga</b> – tryck <b class="ui">Välj bild</b> och hämta klubbmärket.
+        PNG med genomskinlig bakgrund blir snyggast.</li>
+      <li><b class="ui">PIN för nivåflik</b> – 4–6 siffror. Skyddar bedömningarna. Kan sättas senare.</li>
+    </ul>
+  </li>
+  <li>Tryck <b class="ui">Kom igång</b>. Har du redan en backup väljer du i stället
+    <b class="ui">⬆ Återställ från backup</b>.</li>
+</ol>
+
+<div class="warn"><span class="lbl">Testa lagringen en gång innan du litar på appen</span>
+Gör det här <em>innan</em> du lägger in hela truppen: lägg in en spelare, stäng appen helt och öppna
+den igen. Är spelaren kvar fungerar lagringen på den enheten. Är spelaren <em>borta</em> tillåter
+webbläsaren inte lagring för en fil som öppnas direkt från filsystemet – då hjälper det inte att
+försöka igen, filen måste ligga på en webbadress. Lägg den på klubbens hemsida, GitHub Pages från ett
+publikt repo eller en gratistjänst för statiska sidor och öppna den därifrån. Samma app, samma fil,
+men nu med en riktig adress och fungerande lagring.
+<br><br>Från v4 säger appen ifrån själv: går det inte att spara lägger den en orange rad högst upp – <b>”Data sparas inte här”</b> – med en knapp för att exportera en backup direkt. Ser du den raden är det just det här som hänt.<br><br>Fungerar det inte på en enhet: prova en annan, eller kör appen på dator. Det är samma fil och
+samma funktioner överallt, och du flyttar över data med en backup enligt avsnitt 16.</div>
+
+<h2><span class="n">2</span>Lägg in truppen</h2>
+<p class="lead">En spelare i taget. Har du redan en lista i Excel eller SportAdmin – hoppa till steg 3.</p>
+<ol>
+  <li>Gå till <b class="ui">Trupp</b> i menyn och tryck <b class="ui">+ Lägg till spelare</b>.</li>
+  <li>Fyll i uppgifterna. Bara namnet är obligatoriskt:
+    <ul>
+      <li><b class="ui">Position</b> och <b class="ui">Sekundär position</b> – styr att positionerna sprids mellan grupperna.</li>
+      <li><b class="ui">Serienivå</b> – Ingen, Nivå 1, 2 eller 3. Det här är <em>vilket lag i seriesystemet</em>
+        spelaren tillhör, inte en bedömning. Den syns öppet i appen.</li>
+      <li><b class="ui">Hänthet</b> – vänsterhänta kan spridas mellan grupperna.</li>
+      <li><b class="ui">Bedömning</b> – gradering, försvar och spelplats. Ligger bakom PIN, se avsnitt 5.</li>
+      <li><b class="ui">Färgprick</b> och <b class="ui">Foto</b> – gör spelarna lättare att känna igen i listorna.</li>
+      <li><b class="ui">Anteckning</b> – bara för dig. Följer aldrig med i någon export.</li>
+      <li><b class="ui">Aktiv i truppen</b> – slå av för skadad eller slutad. Historiken bevaras.</li>
+    </ul>
+  </li>
+  <li>Tryck <b class="ui">Spara</b>. Upprepa för hela truppen.</li>
+</ol>
+<p>För att ändra en spelare senare: tryck på spelarens kort eller rad. Längst ner i dialogen finns
+<b class="ui">Ta bort permanent</b> – använd hellre <b class="ui">Aktiv i truppen</b> om spelaren kan komma tillbaka.</p>
+
+<h2><span class="n">3</span>Klistra in en trupplista</h2>
+<ol>
+  <li>I <b class="ui">Trupp</b>, tryck <b class="ui">Klistra in trupp</b>.</li>
+  <li>Kopiera listan från Excel, SportAdmin eller ett mejl och klistra in i textfältet.
+    <em>En spelare per rad.</em></li>
+  <li>Har du flera kolumner gissar appen vad de innehåller – namn, position, hänthet, serienivå –
+    och visar sin tolkning. Kontrollera att kolumnerna hamnat rätt och ändra annars i listan ovanför.</li>
+  <li>Tryck <b class="ui">Lägg till</b>. Spelare som redan finns med samma namn hoppas över.</li>
+</ol>
+<div class="privacy"><span class="lbl">Med flit begränsat</span>
+Inklistring kan aldrig sätta bedömningar. Den dialogen är inte PIN-skyddad, så att tillåta det
+hade varit en väg runt låset. Gradering och försvar sätts bara bakom PIN.</div>
+
+<h2><span class="n">4</span>Positioner och truppvyer</h2>
+<p class="lead">Fyra flikar i truppvyn: <b class="ui">Spelare</b>, <b class="ui">Relationer</b>,
+<b class="ui">Nivåer</b> och <b class="ui">Positioner</b>.</p>
+<table>
+  <tr><th>Funktion</th><th>Så gör du</th></tr>
+  <tr><td>Kort- eller listvy</td><td>Knapparna till höger i flikraden. Listvyn visar fler spelare på en skärm.</td></tr>
+  <tr><td>Filtrera på serienivå</td><td>Knapparna ovanför listan. Tryck flera för att kombinera, t.ex. nivå 2 och 3. Har spelaren en spelplatsfördelning (avsnitt 5) är det den som styr, annars serienivån.</td></tr>
+  <tr><td>Filtrera på position</td><td>Knappraden under nivåerna. Fungerar likadant med flerval.</td></tr>
+  <tr><td>Positioner på planen</td><td>Fliken <b class="ui">Positioner</b> visar en halvplan med tröjor och antal spelare per position – bra för att upptäcka att ni har fem mittnior och en målvakt.</td></tr>
+  <tr><td>Byta tröjfärg på planen</td><td>Färgväljaren ovanför planen: vit, vinröd, gul, grön, blå.</td></tr>
+</table>
+<p>Positionerna i fullt läge är MV, V6, M6, H6, V9, M9 och H9. I <b class="ui">Inställningar</b> kan du
+byta till förenklat läge: MV / Bak / Mitt / Kant. Befintliga spelare behåller sin position tills du ändrar den.</p>
+
+<h2><span class="n">5</span>Bedömningar bakom PIN</h2>
+<p class="lead">Tre grova bedömningar per spelare, som bara appen ser: <b>gradering 1–10</b>
+(helhet), <b>försvar 1–5</b> och <b>spelplats</b> – tio poäng fördelade mellan serienivåerna.</p>
+<ol>
+  <li>Sätt en PIN först: <b class="ui">Inställningar</b> → <b class="ui">Sätt PIN</b>, eller
+    <b class="ui">Lås upp</b> längst ner i menyn.</li>
+  <li>Gå till <b class="ui">Trupp</b> → fliken <b class="ui">Nivåer</b> och lås upp.</li>
+  <li>Tryck siffrorna för gradering och försvar. Trycker du på samma siffra igen rensas den.</li>
+  <li>På raden <b class="ui">Spelplats</b> fördelar du tio poäng med plus och minus. Räknaren till
+    höger visar hur många du har kvar, och plusknapparna slås av när alla tio är utdelade.</li>
+  <li>Lås igen med <b class="ui">Lås</b> längst ner i menyn. Låset släpper också automatiskt när appen startas om.</li>
+</ol>
+<p>Samma tre kan sättas i spelardialogen under <b class="ui">Bedömning</b> – också bakom PIN.
+Appen markerar bedömningar som inte uppdaterats på länge; hur länge väljer du i Inställningar.</p>
+
+<h3>Spelplats – var ska spelaren spela?</h3>
+<p>Fördelningen svarar på en annan fråga än graderingen. Graderingen säger <em>hur stark</em>
+spelaren är, spelplatsen säger <em>var</em> hen hör hemma i seriesystemet. En spelare som är
+<b>6 på nivå 2 och 4 på nivå 3</b> är i första hand en tvåa men fungerar bra som trea; en som är
+<b>10 på nivå 1</b> är där hela tiden.</p>
+<ul>
+  <li>Fördelningen påverkar <em>urvalet</em>: väljer du nivå 2 i truppen, träningen eller en cup
+    kommer alla med minst en poäng på nivå 2 med – oavsett var de är registrerade.</li>
+  <li>Den påverkar <em>inte</em> hur lagen sätts ihop. Jämna lag räknas fortfarande på graderingen.</li>
+  <li>Nollar du alla tre nivåerna tas bedömningen bort, och urvalet går tillbaka till att följa
+    spelarens öppna serienivå.</li>
+</ul>
+<div class="tip"><span class="lbl">Serienivå eller spelplats?</span>
+<b>Serienivå</b> i spelardialogen är öppen fakta: vilket lag spelaren är anmäld i. Den syns i appen
+och följer med i en delad trupp. <b>Spelplats</b> är din bedömning av var hen borde spela – den bor
+bakom PIN och lämnar aldrig appen. Båda finns, för de svarar på olika frågor.</div>
+<div class="privacy"><span class="lbl">Grundregel</span>
+Siffrorna visas aldrig i resultat, utskrifter eller exporter. En förälder som tittar över axeln,
+en utskrift på kylskåpet eller en delad trupplista kan inte avslöja vad du satt.</div>
+<div class="tip"><span class="lbl">Så mycket behövs</span>
+Algoritmen klarar sig med grova siffror. Sitt inte och finjustera mellan 6 och 7 – skillnaden mellan
+en 3 och en 8 är det som gör lagen jämna. Saknas siffror räknas spelaren som mitten.</div>
+
+<h2><span class="n">6</span>Relationer</h2>
+<ol>
+  <li><b class="ui">Trupp</b> → fliken <b class="ui">Relationer</b>.</li>
+  <li>Välj två spelare – eller tre, den tredje rutan är valfri – och en typ:
+    <ul>
+      <li><b class="ui">Spelar bra ihop</b> – mjuk plusvikt, hamnar oftare tillsammans.</li>
+      <li><b class="ui">Variera</b> – mjuk minusvikt, bra för att bryta upp klickar.</li>
+      <li><b class="ui">Lås ihop</b> – hamnar <em>alltid</em> i samma grupp. Använd sparsamt; för många
+        låsningar gör det omöjligt att få jämna grupper.</li>
+    </ul>
+  </li>
+  <li>Tryck <b class="ui">Lägg till relation</b>. Relationerna gäller tills du tar bort dem.</li>
+</ol>
+<p>En relation mellan tre gäller lika mellan alla i gruppen, inte bara i en kedja. Tre som
+<b class="ui">Variera</b> betyder alltså att alla tre helst ska hamna i var sin grupp – och vikten
+skalar: två av dem ihop är halva problemet, alla tre ihop är hela. Ett <b class="ui">Lås ihop</b>
+mellan tre tar en tredjedel av en grupp om ni är nio på träningen, så räkna efter innan du sätter
+det. Tas en av de tre bort ur truppen finns relationen kvar mellan de två andra.</p>
+
+<h2><span class="n">7</span>Spelarsamtal</h2>
+<p class="lead">Individuella samtal utifrån <em>dina egna frågor</em>. Hela truppen svarar på samma
+frågor i en omgång, och nästa omgång kan använda samma mall, bygga vidare på den eller börja om.
+Egen menypunkt direkt under Trupp.</p>
+
+<div class="privacy"><span class="lbl">Tvärtom mot nivåfliken</span>
+Nivåsiffrorna är ditt interna arbetsmaterial och ligger bakom PIN. Samtalen är tvärtom
+<em>spelarens</em> – de är skrivna för att kunna vändas mot henne: ”kolla vad du sa i höstas, nu gör
+du det!”. Därför är samtalsvyn inte låst, och därför visas ingen gradering, inget försvar och ingen
+spelplats där – inte ens när PIN är upplåst.</div>
+
+<h3>Bygg frågorna första gången</h3>
+<p>Första gången du öppnar Spelarsamtal finns inga frågor. Det är med flit: frågorna ska vara dina,
+inte mina. Tryck <b class="ui">Bygg frågeformuläret</b>, ge mallen ett namn och lägg till frågor.
+Varje fråga har en typ:</p>
+<table>
+  <tr><th>Typ</th><th>Används till</th></tr>
+  <tr><td>Kort svar</td><td>En rad – ett ord eller en mening.</td></tr>
+  <tr><td>Långt svar</td><td>Flera rader, för det som behöver utvecklas.</td></tr>
+  <tr><td>Skala 1–5</td><td>Spelaren sätter en siffra, t.ex. ”hur roligt är det just nu?”.</td></tr>
+  <tr><td>Välj ett alternativ</td><td>Du skriver alternativen själv.</td></tr>
+  <tr><td>Mål att följa upp</td><td>Blir ett mål med status Nytt → På väg → Uppnått, som följer med
+    till nästa omgång.</td></tr>
+</table>
+<p>Pilarna flyttar en fråga upp eller ner, <b class="ui">Ändra</b> öppnar den igen och ✕ tar bort
+den. En fråga kan märkas <b>måste besvaras</b> – då går samtalet inte att spara utan svar.</p>
+
+<h3>En omgång åt gången</h3>
+<p>När mallen är sparad startar <b>Omgång 1</b>. Hela truppen får samma frågor, så svaren går att
+jämföra och följa upp. Översikten visar hur många som är kvar och lägger dem som inte svarat överst
+– listan är din planering: börja uppifrån. Uppe till höger står hur många aktiva mål som är nya, på
+väg respektive uppnådda.</p>
+<ol>
+  <li>Tryck på spelarens rad, sedan <b class="ui">+ Svara i Omgång 1</b>. Du kan också gå via
+    spelarens kort i truppen: <b class="ui">Samtal och mål</b> längst ner i dialogen.</li>
+  <li>Har spelaren öppna mål sedan tidigare ligger de överst under <b class="ui">Följ upp sedan
+    tidigare</b>. Sätt status tillsammans med spelaren: <b class="ui">Nytt</b> →
+    <b class="ui">På väg</b> → <b class="ui">Uppnått</b>, eller <b class="ui">Ersatt</b> när målet
+    bytts ut. Statusen sparas direkt.</li>
+  <li>Svara på omgångens frågor och tryck <b class="ui">Spara samtal</b>.</li>
+  <li>När alla svarat trycker du <b class="ui">Stäng omgången</b>. Hinner någon inte svara går det
+    att stänga ändå – appen säger bara hur många det gäller. En långtidsskadad spelare ska inte kunna
+    blockera hela truppen.</li>
+</ol>
+
+<h3>Nästa omgång</h3>
+<p><b class="ui">+ Starta nästa omgång</b> ger tre vägar:</p>
+<ul>
+  <li><b>Samma mall</b> – välj den i listan. Bra när du vill se hur svaren rört sig sedan sist.</li>
+  <li><b class="ui">Bygg vidare på en mall</b> – frågorna kopieras och du lägger till eller tar bort.
+    <b>Kopieras</b>, inte skrivs om: omgång 1 behåller sina frågor, så gamla svar fortsätter höra
+    ihop med de frågor de faktiskt besvarade.</li>
+  <li><b class="ui">Gör en ny mall</b> – börja om från tomt.</li>
+</ul>
+<p>Du kan ändra frågorna mitt i en omgång med <b class="ui">Ändra frågorna</b>. Har någon redan
+svarat – i den här omgången eller i en annan som delar mallen – blir ändringen en ny mall. Har ingen
+svarat skrivs mallen om på plats.</p>
+
+<h3>Rätta i efterhand</h3>
+<p>En stängd omgång är inte låst. <b class="ui">Ändra</b> på ett samtalskort öppnar samma svar igen.
+Rättningen skapar inget nytt samtal och nollställer inte målens status.</p>
+
+<div class="tip"><span class="lbl">Färdighetsmål, inte resultatmål</span>
+”Våga skjuta från nio meter” går att träna på och äga själv. ”Göra fler mål” gör det inte – det beror
+lika mycket på laget, motståndet och domaren. Formuläret påminner om det, men det är i samtalet det
+avgörs: fråga <em>vad vill du bli bättre på</em>, inte <em>vad vill du prestera</em>.</div>
+
+<h3>Uppnådda mål</h3>
+<p>Mål som satts till <b class="ui">Uppnått</b> flyttas upp till rutan <b>Det här har du klarat</b>
+högst upp på spelarens sida. Den listan är själva poängen med modulen: den är till för att visas för
+spelaren.</p>
+
+<h3>Ett ansvar som nu är ditt</h3>
+<p>Tidigare var fälten korta och styrda just för att modulen inte skulle bli en dold journal över
+barn. Nu skriver du frågorna själv, och då flyttar det ansvaret till dig. Två saker att hålla i:</p>
+<ul>
+  <li><b>Frågorna visas för spelaren.</b> Det är hela poängen med vyn. Skriv dem så att du kan läsa
+    dem högt med henne bredvid dig. Omdömen om spelaren hör hemma bakom PIN i nivåfliken, inte här –
+    det står också i formulärbyggaren.</li>
+  <li><b>Hälsa, hemförhållanden och konflikter hör inte hemma i en databas</b>, hur lokal den än är.
+    Det går nu rent tekniskt att skriva en sådan fråga. Låt bli.</li>
+</ul>
+<p>Övrigt som medvetet saknas: ingen utskrift eller export av enskilda samtal, och ingen koppling
+till nivåsiffran. Den kommer aldrig att byggas – de två sakerna har olika synlighetsprinciper och
+ska inte mötas.</p>
+<p>Samtal, mål, mallar och omgångar följer med i <b class="ui">Exportera backup</b>, men
+<b>aldrig</b> i <b class="ui">Dela trupp</b>. Påminnelseintervallet i Inställningar gäller när ingen
+omgång är öppen. Tar du bort ett samtal försvinner målen som sattes där.</p>
+
+<div class="tip"><span class="lbl">Dina gamla samtal</span>
+Samtal du höll före den här versionen ligger kvar. De har samlats i en stängd omgång som heter
+<b>Tidigare samtal</b>, med en mall som ser ut som de gamla fälten gjorde: trivsel, mål,
+överenskommelse och styrka. Målen har kvar sin status.</div>
+
+<h2><span class="n">8</span>Ledarstab</h2>
+<p class="lead">De som leder laget, så att du slipper leta telefonnummer på en cupdag och kan
+visa vem som var med vid ett samtal.</p>
+<ol>
+  <li><b class="ui">Ledarstab</b> i menyn → <b class="ui">+ Lägg till ledare</b>.</li>
+  <li>Fyll i namn, roll, mobil och en färgprick. Huvudtränaren sorteras överst i listan.</li>
+  <li><b class="ui">Aktiv i staben</b> stängs av när någon slutar. Tidigare samtal och lag
+    påverkas inte – till skillnad från <b class="ui">Ta bort permanent</b>, som stryker ledaren
+    även där.</li>
+</ol>
+<p>Kortet innehåller med flit inget mer. Ledare är vuxna kollegor: det finns ingen gradering,
+inget försvarsbetyg och inget anteckningsfält om dem. Motsvarigheten till spelarnas nivåsiffror
+ska inte finnas om vuxna – och skulle den finnas vore den inte ens PIN-skyddad.</p>
+<h3>Ledare på samtal och lag</h3>
+<ul>
+  <li><b>Spelarsamtal:</b> i samtalsformuläret finns <b class="ui">Ledare med på samtalet</b>.
+    Bocka i vilka som satt med; det visas längst ner på samtalskortet.</li>
+  <li><b>Träningsgrupper och cuplag:</b> tryck på raden överst i lagkortet – <b class="ui">+ Ledare</b> –
+    och välj vilka som ansvarar. De följer med i historiken och står på utskriften under lagnamnet.</li>
+</ul>
+
+<h2><span class="n">9</span>Skapa träningsgrupper</h2>
+<ol>
+  <li>Gå till <b class="ui">Träning</b>.</li>
+  <li>Välj <b class="ui">Urval</b> om du bara ska dela ett serielag, annars låt det stå på alla.</li>
+  <li>Bocka i vilka som är på plats. <b class="ui">Alla</b> och <b class="ui">Ingen</b> snabbar upp.</li>
+  <li>Tryck <b class="ui">Skapa träningsgrupper</b>. I popupen väljer du:
+    <ul>
+      <li><b class="ui">Antal grupper</b> – 2, 3, 4, <b class="ui">Eget</b> antal, eller
+        <b class="ui">Grupper om …</b> när du vill styra storleken i stället för antalet.</li>
+      <li><b class="ui">Parametrar</b> – se tabellen nedan.</li>
+    </ul>
+  </li>
+  <li>Tryck <b class="ui">Dela in i N grupper</b>.</li>
+</ol>
+<table>
+  <tr><th>Parameter</th><th>Vad den gör</th></tr>
+  <tr><td>Jämna nivåer</td><td>Utgår från graderingen. Av = ren slump.</td></tr>
+  <tr><td>Minst en målvakt per grupp</td><td>Indelningen börjar med att lägga en målvakt i varje grupp. Enda undantaget är låsta par: två målvakter som är låsta ihop måste dela grupp, och då kan en grupp bli utan. Appen säger till när det händer.</td></tr>
+  <tr><td>Sprid positioner</td><td>Undviker fyra nior i samma grupp.</td></tr>
+  <tr><td>Ta hänsyn till relationer</td><td>Slår på låsningar och de mjuka vikterna.</td></tr>
+  <tr><td>Jämna försvar</td><td>Kräver försvarssiffror, annars gråmarkerad. Väger lika tungt som nivåbalansen, men räknas på skalan 1–5. Saknad siffra räknas som 3. Balansraden visar OK när skillnaden mellan högsta och lägsta lagsnitt är högst 0,5 (för nivå: 1,0).</td></tr>
+  <tr><td>Sprid vänsterhänta</td><td>Bra när ni tränar spelvändningar.</td></tr>
+  <tr><td>Variera mot förra gången</td><td>Kräver historik. Bryter upp par som spelade ihop senast.</td></tr>
+</table>
+<p>Appen lägger först ut spelarna i en orm – bäst, näst bäst, och tillbaka igen – och testar sedan
+tusentals byten för att se om något blir jämnare. Hårda krav som låsta par och målvaktstäckning väger
+alltid tyngre än de mjuka önskemålen.</p>
+<div class="tip"><span class="lbl">Standardinställningar</span>
+Vill du inte välja parametrar varje gång: sätt dem under <b class="ui">Inställningar → Standardregler</b>.
+Träningsvyn minns dessutom vad du använde senast.</div>
+
+<h2><span class="n">10</span>Justera en färdig indelning</h2>
+<table>
+  <tr><th>Vad du vill göra</th><th>Så gör du</th></tr>
+  <tr><td>Flytta en spelare</td><td>Dra spelaren till en annan grupp.</td></tr>
+  <tr><td>Hålla ihop två spelare</td><td>Långtryck på båda. De visas som ett låst par ovanför grupperna och följs åt vid nästa omslumpning. Tryck ✕ för att släppa.</td></tr>
+  <tr><td>Nytt försök</td><td><b class="ui">Slumpa om</b>. Låsta par och parametrar behålls.</td></tr>
+  <tr><td>Byta tröjfärg</td><td>Tryck på färgpricken vid gruppnamnet – den stegar till nästa färg: svart, vit, vinröd, gul, blå, grön, röd.</td></tr>
+  <tr><td>Döpa om en grupp</td><td>Tryck på gruppnamnet.</td></tr>
+  <tr><td>Se hur jämnt det blev</td><td><b class="ui">Balans</b> – kräver upplåst PIN. Raden visar skillnaderna mellan grupperna och uppdateras direkt när du flyttar någon.</td></tr>
+  <tr><td>Ta bort en spelare som gått hem</td><td>Tryck på spelarens bricka → <b class="ui">Ta bort från grupperna</b>. Hen markeras samtidigt som frånvarande. Grupperna slumpas inte om.</td></tr>
+  <tr><td>Lägga till någon som kom sent</td><td><b class="ui">+ Lägg till spelare</b> i resultatraden. Listan visar alla aktiva som inte redan är med – även de utanför urvalet, märkta som sådana. Välj <b class="ui">Bästa balans</b> eller peka ut gruppen själv.</td></tr>
+  <tr><td>Börja om</td><td><b class="ui">‹ Tillbaka</b> tar dig till närvarolistan.</td></tr>
+</table>
+
+<h2><span class="n">11</span>Skriv ut och spara som PDF</h2>
+<ol>
+  <li>Tryck <b class="ui">Skriv ut</b> i resultatvyn (eller <b class="ui">Skriv ut laglistor</b> i en cup).</li>
+  <li>Utskriften visar laglogga, truppnamn, datum och grupperna med namn – <em>aldrig</em> siffror.
+    Målvakterna står först, resten i bokstavsordning. På skärmen är ordningen en annan:
+    målvakter först och sedan fallande gradering, eftersom det är din arbetsvy. Utskriften
+    är alfabetisk just för att raddordningen inte ska gå att läsa som en rangordning.</li>
+  <li>Vill du ha PDF i stället för papper:
+    <ul>
+      <li><b>Mobil och pekplatta:</b> dela-ikonen i utskriftsvyn → <b class="ui">Spara i Filer</b>.</li>
+      <li><b>Mac:</b> menyn <b class="ui">PDF</b> nere till vänster → <em>Spara som PDF</em>.</li>
+      <li><b>Windows:</b> välj skrivaren <b class="ui">Microsoft Print to PDF</b>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2><span class="n">12</span>Cup</h2>
+<p class="lead">Skillnaden mot träning: cuplagen <em>består</em> över hela dagen eller helgen.</p>
+<ol>
+  <li><b class="ui">Cup</b> → <b class="ui">+ Nytt event</b>, ge det ett namn.</li>
+  <li>Välj urval och bocka i vilka som är med på eventet.</li>
+  <li>Sätt <b class="ui">Antal lag</b>. Appen skriver ut vad det blir för lagstorlekar.</li>
+  <li>Ställ in <b class="ui">Krav</b> och tryck <b class="ui">Skapa lag</b>.</li>
+  <li>Vill du sätta ihop stommen själv: tryck <b class="ui">Börja med tomma lag</b> i stället.
+    Lägg in de spelare du vill bestämma över med <b class="ui">+ Lägg till spelare</b> och peka ut
+    laget, och tryck sedan <b class="ui">Fyll på lagen</b> när du är klar. De du placerat står kvar
+    orörda; resten fördelas efter samma krav som en vanlig indelning. En rad visar hur många uttagna
+    som fortfarande väntar på lag.</li>
+  <li>Lagen ligger kvar när du stänger appen. Du kan dra spelare, döpa om lag, byta tröjfärg
+    eller <b class="ui">Slumpa om</b>.</li>
+  <li>Bemanningen justeras på plats, precis som i träningen: tryck på en spelare för
+    <b class="ui">Ta bort från lagen</b> (hen stryks samtidigt ur eventets närvaro), och
+    <b class="ui">+ Lägg till spelare</b> tar in någon som dyker upp sent – i bäst balanserade
+    laget eller ett du väljer själv. Lagen slumpas inte om.</li>
+</ol>
+
+<h2><span class="n">13</span>Skicka ett cuplag på granskning</h2>
+<p class="lead">Låt en assisterande tränare titta på lagen och flytta om – utan konto, utan app och
+utan att något ändras hos dig förrän du sagt ja.</p>
+<ol>
+  <li>Öppna eventet och tryck <b class="ui">Skicka för granskning</b>. Du får en liten HTML-fil
+    (ungefär 15 kB) med bara det eventet i. Mejla den, AirDroppa den eller lägg den i en delad mapp.</li>
+  <li>Assistenten <b>dubbelklickar filen</b>. Den öppnas i webbläsaren som en egen liten sida –
+    ingen installation, inget konto, fungerar offline och på telefon.</li>
+  <li>Där trycker hen på en spelare för att flytta hen till ett annat lag, ta ur hen ur lagen, eller
+    plocka in någon som står utanför. Hela den aktiva truppen följer med, så en sen påstigare går
+    att få med. En rad längst ner räknar ändringarna, och <b class="ui">Återställ</b> tar tillbaka
+    utgångsläget.</li>
+  <li>Hen trycker <b class="ui">Skicka tillbaka</b> och väljer antingen en fil att bifoga eller en
+    kod att klistra in i ett meddelande. Ett tvålagsevent ger en kod på runt 650 tecken, så den får
+    plats i ett sms. Ett meddelande till dig kan skrivas med.</li>
+  <li>Du trycker <b class="ui">Läs in granskning</b> i eventet och väljer filen eller klistrar in
+    koden. <b>Innan något ändras</b> får du en lista: vem som flyttats vart, vem som tagits ur
+    lagen, vem som satts in. Godkänn – eller låt bli.</li>
+</ol>
+<div class="privacy"><span class="lbl">Vad filen innehåller</span>
+Namn, en markering för målvakterna, och lagen. <b>Inget annat.</b> Ingen gradering, inget försvar,
+ingen spelplats, inga spelarsamtal, inga mål och inga foton. Granskningsvyn är en egen byggd sida
+som inte ens innehåller koden för att visa sådant.</div>
+<p>Läser du in samma svar två gånger händer ingenting andra gången – ändringarna är redan gjorda.
+Har du själv lagt till en spelare efter att du skickade filen rörs hen inte: svaret vet inte om
+hen. Och har ni ändrat samtidigt är det du som ser skillnaden och avgör, i stället för att den som
+sparade sist vinner tyst.</p>
+
+<h2><span class="n">14</span>Historik</h2>
+<p class="lead">Varje indelning sparas automatiskt. Här ser du vad du gjorde och kan återanvända det.</p>
+<ol>
+  <li>Gå till <b class="ui">Historik</b> och tryck på en post för att fälla ut lagen.</li>
+  <li><b class="ui">Använd igen</b> lägger in samma grupper som dagens träningsgrupper. Den sparade
+    posten lämnas orörd.</li>
+  <li>✕ tar bort en post.</li>
+</ol>
+<p>Historiken är också underlaget för parametern <b class="ui">Variera mot förra gången</b>.</p>
+
+<h2><span class="n">15</span>Inställningar</h2>
+<table>
+  <tr><th>Inställning</th><th>Vad den gör</th></tr>
+  <tr><td>Truppens namn</td><td>Syns i menyn och som rubrik på utskrifter.</td></tr>
+  <tr><td>Laglogga</td><td>Ladda upp eller ta bort. Visas i menyn och i utskriftens sidhuvud.</td></tr>
+  <tr><td>Positionsläge</td><td>Fullt (MV/V6/M6/H6/V9/M9/H9) eller förenklat (MV/Bak/Mitt/Kant).</td></tr>
+  <tr><td>PIN-skydd</td><td>Sätt, ändra eller ta bort. Att ta bort kräver nuvarande PIN.</td></tr>
+  <tr><td>Påminnelse om nivåuppdatering</td><td>1, 2, 3, 6 eller 12 månader. Markerar gamla bedömningar.</td></tr>
+  <tr><td>Påminnelseintervall (Spelarsamtal)</td><td>3, 6 eller 12 månader (förvalt 6). Spelare som inte haft ett samtal så länge märks <b class="ui">Dags igen</b> i Spelarsamtal. Samtalsvyn är inte PIN-skyddad.</td></tr>
+  <tr><td>Standardregler</td><td>Förvalda parametrar vid ny indelning.</td></tr>
+  <tr><td>Importera</td><td>Läs in en backup eller en delad trupp.</td></tr>
+  <tr><td>Nollställ allt</td><td>Raderar all data på enheten. Kan inte ångras.</td></tr>
+</table>
+<p>Längst ner i menyn ligger <b class="ui">Exportera backup</b>, <b class="ui">Dela trupp</b>,
+PIN-låset, <b class="ui">Hem</b> och växeln för mörkt/ljust läge – åtkomliga från alla vyer.
+<b class="ui">Hem</b> tar dig tillbaka till Handbollssvitens startsida (där alla appar ligger). Det är en vanlig länk
+till en annan webbadress: din trupp och dina inställningar påverkas inte, och ingen data följer med.</p>
+
+<h2><span class="n">16</span>Backup, delning och byte av enhet</h2>
+<p class="lead">Det finns två exporter, och skillnaden är viktig.</p>
+<table>
+  <tr><th>Export</th><th>Innehåller</th></tr>
+  <tr><td>Exportera backup</td><td><b>Allt</b>: spelare, bedömningar, försvar, spelplats, anteckningar, relationer, spelarsamtal och mål, historik, cuper, inställningar och lagloggan. Din egen säkerhetskopia – dela den inte vidare.</td></tr>
+  <tr><td>Dela trupp</td><td>Namn, position, hänthet och serienivå. <b>Inga</b> bedömningar, inga anteckningar och inga samtal. Den här kan du skicka till en annan tränare.</td></tr>
+</table>
+<h3>Rutin jag rekommenderar</h3>
+<ol>
+  <li>Ta en <b class="ui">Exportera backup</b> efter varje gång du ändrat truppen, och åtminstone
+    en gång i månaden.</li>
+  <li>Spara filen någonstans du hittar den igen – en molnmapp, mejl till dig själv, en mapp på datorn.</li>
+  <li>Filnamnet innehåller datum, så flera backuper kan ligga sida vid sida.</li>
+</ol>
+<h3>Flytta till en annan enhet</h3>
+<p>Samma väg fungerar både när du byter enhet och när du vill köra appen på flera – t.ex. lägga in
+truppen på datorn och ta med den ut i hallen. Kom ihåg att enheterna inte pratar med varandra:
+ändringar på den ena syns inte på den andra förrän du exporterar och importerar igen.</p>
+<ol>
+  <li>Exportera backup från den enhet som har den aktuella truppen.</li>
+  <li>Öppna appen på den andra enheten. I välkomstrutan: <b class="ui">⬆ Återställ från backup</b>.</li>
+  <li>Är appen redan igång: <b class="ui">Inställningar → Importera → Välj fil</b>, och välj
+    <b class="ui">Ersätt allt</b> eller <b class="ui">Slå ihop</b>.</li>
+</ol>
+<div class="warn"><span class="lbl">Ingen automatisk säkerhetskopiering</span>
+Appen sparar bara lokalt i webbläsaren. Raderar du webbdata, byter enhet eller nollställer appen
+finns inget moln att hämta tillbaka från. Backupen är din enda kopia.</div>
+
+<h2><span class="n">17</span>Integritet – vad appen inte gör</h2>
+<p class="lead">Appen är byggd för att veta så lite som möjligt om barn.</p>
+<ul>
+  <li>Ingen server, inget konto, ingen inloggning, ingen synk. Data lämnar aldrig enheten om du inte
+    själv exporterar en fil.</li>
+  <li>Bedömningar är grova, PIN-skyddade och visas aldrig i resultat, utskrifter eller exporter.</li>
+  <li>Anteckningar följer aldrig med i någon export.</li>
+  <li>Spelarsamtalen dokumenterar mål och överenskommelser – inte bedömningar, hälsa eller
+    hemförhållanden. Korta, styrda fält i stället för fritext, med flit.</li>
+  <li>Inklistring kan inte sätta bedömningar – det hade varit en väg runt PIN-låset.</li>
+  <li>Ingen statistik skickas någonstans. Appen gör inga nätverksanrop alls.</li>
+</ul>
+<div class="privacy"><span class="lbl">Varför det är byggt så</span>
+Bedömningar av barn ska inte ligga på en server, och de ska inte kunna läsas av misstag. Därför är
+siffrorna både låsta och utestängda från allt appen skriver ut eller exporterar. Det enda som kan
+läcka dem är en full backup – behandla den som en privat fil.</div>
+
+<h2><span class="n">18</span>Om något strular</h2>
+<table>
+  <tr><th>Symtom</th><th>Vad du gör</th></tr>
+  <tr><td>Truppen är borta efter omstart</td><td>Webbläsaren sparar inte data för filen. Se den orange rutan i avsnitt 1 – lägg filen på en webbadress. Har du en backup: återställ den efteråt.</td></tr>
+  <tr><td>Jag har glömt PIN-koden</td><td>Appen fungerar som vanligt – bara bedömningarna är låsta. Har du en backup från innan PIN sattes kan du återställa den. Annars återstår <b class="ui">Nollställ allt</b>, vilket raderar all data. Det finns med flit ingen bakväg.</td></tr>
+  <tr><td>”Dela in”-knappen går inte att trycka</td><td>Det behövs minst två spelare på plats, och minst lika många spelare som grupper.</td></tr>
+  <tr><td>Jämna försvar är gråmarkerad</td><td>Ingen spelare har en försvarssiffra än. Sätt några i Trupp → Nivåer.</td></tr>
+  <tr><td>Variera mot förra gången är gråmarkerad</td><td>Det finns ingen historik än. Gör en indelning först.</td></tr>
+  <tr><td>Ett lag saknar målvakt</td><td>Raden ovanför lagen säger varför: ingen målvakt bland de närvarande (sätt position MV i truppen), färre målvakter än lag (oundvikligt), två målvakter låsta ihop under <b class="ui">Relationer</b> (ta bort låsningen), kravet avstängt i parametrarna, eller en manuell flytt som satt två målvakter i samma lag.</td></tr>
+  <tr><td>Grupperna blir sneda</td><td>Kontrollera låsta par – för många låsningar tvingar in spelare i samma grupp. Kontrollera också att bedömningarna inte är för gamla.</td></tr>
+  <tr><td>Loggan syns inte</td><td>Ladda upp den igen i <b class="ui">Inställningar → Laglogga</b>. Mycket stora bildfiler kan behöva sparas om som PNG först.</td></tr>
+  <tr><td>Texten är för liten på en liten skärm</td><td>Vänd enheten till liggande läge och lägg appen på hemskärmen – då försvinner webbläsarens adressfält. Appen är gjord för liggande format.</td></tr>
+  <tr><td>Appen beter sig olikt på två enheter</td><td>Varje enhet har sin egen data och sitt eget PIN-läge. Inget synkas automatiskt – flytta över med en backup enligt avsnitt 16.</td></tr>
+</table>
+
+<footer>
+  Teambuilder v15 · handbok · Uppdaterad oktober 2026 · All data lagras lokalt på enheten.
+  Bedömningar visas aldrig i resultat, utskrifter eller exporter.
+</footer>
+
+</body>
+</html>

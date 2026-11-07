@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="sv"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>Handboll Tracker – manual</title>
+<style>
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  :root { --accent: #b8860b; --ink: #1b1b1f; --grey: #5a5a63; --line: #e8dfc4; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; color: var(--ink); font: 400 10.5pt/1.5 "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 14px; }
+  .kicker { color: var(--accent); font-weight: 700; font-size: 9.5pt; letter-spacing: .1em; text-transform: uppercase; }
+  h1 { margin: 2px 0; font-size: 26pt; line-height: 1.1; }
+  header p { margin: 0; color: var(--grey); }
+  section { break-inside: avoid-page; margin: 0 0 6px; }
+  h2 { font-size: 14pt; color: var(--accent); margin: 18px 0 5px; break-after: avoid; }
+  p { margin: 0 0 8px; } ol, ul { margin: 0 0 8px; padding-left: 20px; } li { margin: 3px 0; }
+  b { font-weight: 700; }
+  footer { margin-top: 22px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--grey); font-size: 9pt; }
+</style><style>
+.mbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;gap:8px;align-items:center;background:#1c1c1e;padding:10px 14px;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.mbar a{color:#fff;text-decoration:none;border:1px solid #4a4b52;padding:8px 12px;white-space:nowrap}
+.mbar a:hover{border-color:#ffd60a;color:#ffd60a}
+.mbar .sp{flex:1}
+.mbar a.dl{background:#ffd60a;color:#000;border-color:#ffd60a}
+.mbar a.dl:hover{background:#fff;border-color:#fff;color:#000}
+@media screen{
+  body{box-sizing:border-box;max-width:900px;margin:0 auto!important;padding:66px 16px 48px}
+  img,svg,table{max-width:100%}
+}
+@media screen and (max-width:640px){
+  table{display:block;max-width:100%;overflow-x:auto}
+  .cols,.two{grid-template-columns:1fr!important}
+}
+@media (max-width:480px){.mbar .long{display:none}.mbar{padding:8px 10px;gap:6px}.mbar a{padding:8px 10px}}
+@media print{.mbar{display:none}}</style>
+</head><body>
+<div class="mbar"><a href="../index.html">⌂ Hem</a><a href="../manualer.html">← Manualer</a><span class="sp"></span><a class="dl" href="tracker-manual.pdf" download><span class="long">⬇ Ladda ner </span>PDF</a></div>
+<header><div class="kicker">Handbollssviten</div><h1>Handboll Tracker</h1>
+<p>Manual · appversion v2.12 · samma text som hjälpvyn ”Så funkar appen” i appen.</p></header>
+<section><h2>Dina lag &amp; ålderskullar</h2>
+      <p>Profilkortet uppe till vänster visar ditt aktiva lag och dess <b>ålderskull</b>. Du kan ha <b>flera lag</b> — t.ex. ett per ålderskull (P14, F16, Damlag). Tryck på kortet för att öppna <b>Mina lag</b>, där du växlar mellan lag, lägger till nytt eller tar bort. Varje lag är helt separat med egna målvakter, säsonger, cuper, lagbank och statistik.</p>
+      <p>Med ✎-knappen på kortet redigerar du det aktiva lagets namn, ålderskull, logga och <b>målvakter</b>.</p>
+    </section>
+<section><h2>Målvakter</h2>
+      <p>Sidan <b>Målvakter</b> visar det aktiva lagets målvakter, sorterade efter nummer. Klicka på en målvakt för detaljerad statistik — räddningsprocent, en heatmap över målet, uppdelning per skottläge och motståndare, samt <b>speltid</b>. Med <b>✎ Ändra</b> uppe på detaljsidan redigerar du namn, nummer och foto.</p>
+      <p>Överst på detaljsidan filtrerar du i två steg: välj först <b>Tävling</b> (alla matcher, en säsong eller en cup) och sedan eventuellt en <b>enskild match</b> i den. Med <b>Typ</b> kan du dessutom visa bara tävlings- eller bara träningsmatcher. All statistik räknas om efter ditt val.</p>
+      <p>Knappen <b>⬇ Exportera PDF</b> skapar en utskriftsvänlig analys: en sammanfattningssida plus en sida per match. Du väljer vilka matcher och vilka delar (nyckeltal, heatmap, skottläge, motståndare, utveckling, speltid) som ska med, eller bara sammanfattningen.</p>
+      <p>Har du flera målvakter kan du trycka på <b>Jämför</b> för att ställa två mot varandra sida vid sida.</p>
+    </section>
+<section><h2>Säsonger och cuper</h2>
+      <p>Skapa en säsong (seriespel) eller en cup (turnering). Inuti varje skapar du <b>matcher</b> — välj motståndare (bara lag som hör till tävlingen visas, se Lagbank nedan), datum, om det är <b>hemma eller borta</b>, halvlekslängd och vilken målvakt som börjar.</p>
+      <p>I en säsong väljer du även <b>matchtyp</b>: tävlingsmatch eller träningsmatch. Träningsmatcher får en blå etikett på matchkortet och kan filtreras bort i statistiken. Cupmatcher är alltid tävlingsmatcher.</p>
+      <p>Under <b>Registrering</b> väljer du hur matchen förs: <b>Digital registrering</b> (live under matchen) eller <b>Efterrapport från mall</b>. Efterrapport använder du när du fört statistik på papper med mallen och matar in den efteråt. Då anger du bara <b>zon</b> och <b>utfall</b> (RÄDDNING, MÅL eller UTANFÖR), samt <b>Assist</b> och <b>Straff</b>. Matchklocka, halvlek, skottläge och typ finns inte, och skotten får ingen tid. Efterrapporterade matcher märks med en <b>penna-och-papper-ikon</b> i matchlistan, i matchvyn och i PDF-exporterna.</p>
+      <p>Varje matchkort visar resultat med en V/F/O-bricka, hemma–borta-ställning och räddningsprocent. Ta bort en match eller hel säsong/cup med ✕-krysset.</p>
+    </section>
+<section><h2>Matchklockan</h2>
+      <p>I matchvyn finns en klocka i minuter:sekunder. Tryck <b>▶ Starta</b> / <b>⏸ Paus</b> för att styra den. Klockan räknar vidare över halvlekarna (vid 30-minuters halvlek är 2:a halvlek 30:00–60:00). Glappar tiden trycker du <b>Justera tid</b> och ställer den manuellt. Klockan finns inte i efterrapporterade matcher. Klockan pausas automatiskt när du låser matchen.</p>
+    </section>
+<section><h2>Registrera skott under match</h2>
+      <p>Välj först <b>halvlek</b> i väljaren (1:a, 2:a, förlängning eller straffläggning) — varje skott taggas med vald period. Registrera sedan skottet i tre snabba steg:</p>
+      <ol>
+        <li>Tryck på <b>zonen i målet</b> dit skottet gick.</li>
+        <li>Tryck på <b>skottläget</b> i solfjädern under målet (eller ett specialläge som kontring eller straff, samt lobb/studs).</li>
+        <li>Tryck stora gröna <b>RÄDDNING</b>, röda <b>MÅL</b> eller grå <b>UTANFÖR</b> (skott utanför mål).</li>
+      </ol>
+      <p>Tryck <b>+ Assist</b> när målvakten gör en assist. Antalet visas som en räknare, och som statistikrutan <b>Assist</b> på målvaktens detaljsida.</p>
+      <p>Räddningsprocenten och totalerna uppdateras direkt i toppen, och varje skott får automatiskt en tidsstämpel från matchklockan. Tryck <b>↩ Ångra senaste</b> om du registrerar fel. Den tar bort det senaste skottet eller den senaste assisten.</p>
+    </section>
+<section><h2>Målvaktsbyte &amp; speltid</h2>
+      <p>Tryck på <b>⇄ Byt målvakt</b> för att byta målvakt mitt i matchen. Den avgående målvaktens <b>speltid räknas ut automatiskt</b> från matchklockan (tiden sedan hen kom in) och visas som förslag i minuter:sekunder — bekräfta eller justera. Speltiden samlas per målvakt och summeras på statistiksidan.</p>
+    </section>
+<section><h2>Skottlista &amp; matchöversikt</h2>
+      <p>Tryck <b>☰ Skottlista</b> i matchvyn för en kronologisk genomgång av matchen, grupperad per halvlek. Varje rad visar tid, varifrån skottet kom, vart i målet det gick, vilken målvakt som stod och utfallet. Överst finns en <b>10-minutersöversikt</b> som visar räddningar och mål per intervall — så du ser när i matchen det släpper in. Listan fungerar även när matchen är låst. Med <b>⬇ Exportera</b> i matchvyn skapar du en PDF för just den matchen.</p>
+    </section>
+<section><h2>Lås match &amp; resultat</h2>
+      <p>När en match är klar trycker du <b>Lås match</b> för att skydda den mot ändringar. Då får du också fylla i <b>slutresultatet</b> — hemmalaget till vänster, bortalaget till höger — så matchen registreras som vinst, förlust eller oavgjort.</p>
+      <p>Vill du ändra resultatet efteråt trycker du direkt på resultatrutan på matchkortet. Den röda <b>Lås upp</b>-knappen öppnar matchen igen efter en bekräftelse, så att skott och tider kan ändras.</p>
+    </section>
+<section><h2>Lagbank &amp; scoutingrapport</h2>
+      <p>I lagbanken samlar du alla motståndarlag i en gemensam lista. Lagen är tillgängliga överallt — när du skapar en match kan du välja vilket lag som helst ur banken, oavsett tävling.</p>
+      <p>Klicka på ett lag för att öppna dess <b>scoutingrapport</b>, där du lägger in skyttar med nummer, namn, position, skotthand och anteckning. Klicka på en spelare för att grafiskt registrera var hen sätter bollen — tagga varje träff som <b>skott</b> eller <b>straff</b> så byggs en heatmap upp (gul = få, röd = många).</p>
+      <p><b>⧉ Hämta lag</b> kopierar motståndarlag från ett annat av dina lag (kräver minst två lag). Du kan visa lagbanken som ikoner (▦) eller som lista (☰) med växlaren i lagbanken. I scoutingrapporten lägger du till spelare med <b>+ Ny spelare</b>, och <b>Redigera lag</b> ändrar lagets namn, färg och logga.</p>
+      <p>Med <b>Kopiera spelare</b> flyttar du över utvalda spelare till ett annat lag (originalet behålls, och placeringarna följer med). Smidigt när samma spelare möter dig både i cupen och i serien.</p>
+    </section>
+<section><h2>Säkerhetskopiering &amp; lagring</h2>
+      <p>All data sparas lokalt på enheten. Tryck <b>Exportera backup</b> i menyn till vänster för att ladda ner en fil med alla dina lag — spara den t.ex. i Filer eller Google Drive. På inloggningssidan kan du trycka <b>⬆ Återställ från backup</b>, perfekt när du byter enhet.</p>
+      <p><b>Ladda ner mall</b> i menyn öppnar en PDF-mall som du kan skriva ut och föra skott på för hand under matchen. Mata sedan in den via <b>Ny match</b> → <b>Efterrapport från mall</b>.</p>
+      <p>Uppladdade loggor och foton komprimeras automatiskt så att de tar minimalt med plats. <b>Lagringsmätaren</b> i menyn visar hur mycket utrymme datan använder. Knappen <b>Rensa bilder</b> tar bort alla inlagda loggor och foton (statistiken påverkas inte) — ladda upp dem igen så komprimeras de. Skulle lagringen bli full varnar appen dig och erbjuder att exportera en backup direkt, så du aldrig tappar data tyst.</p>
+      <p><b>Nollställ allt</b> i menyn raderar all data på enheten efter två bekräftelser och tar dig tillbaka till inloggningen. Exportera en backup först.</p>
+    </section>
+<section><h2>Mörkt / ljust läge</h2>
+      <p>Knappen längst ner i menyn växlar mellan mörkt och ljust utseende. Valet sparas till nästa gång.</p>
+      <p><b>Hem</b>, strax ovanför, tar dig tillbaka till Handbollssvitens startsida där alla appar ligger. Din data påverkas inte.</p>
+    </section>
+<footer>Tips: lägg till appen på hemskärmen för helskärmsläge utan webbläsarens kontroller.</footer>
+</body></html>

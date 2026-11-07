@@ -94,3 +94,16 @@ Webbsidorna byggs med `node manualer/bygg.cjs`. Skriptet läser källorna från 
 | Matchanalys | `manualer/matchanalys.html`, `matchanalys-manual.pdf` | `docs/manual.html` och `docs/matchanalys-manual.pdf` i `trenchrox/match_summary` (PDF med `node docs/make_manual_pdf.cjs`). |
 
 Sidantalen på `manualer.html` ska stämma med PDF:erna. Målvaktskompendiet och dess PDF:er är inga appmanualer och ligger utanför `manualer/`.
+
+## Övningsbank video (i kompendiet)
+
+Kapitel 9 i `malvaktskompendium_html_v1.html` visar filmer till övningarna i Övningsbanken. Så länge listan är tom står **Kommer snart** kvar. Sidan läser `video/videor.json` när den öppnas från en webbadress (inte direkt från fil) och visar då filmerna grupperade efter övningskod (RE = Reaktion, PO = Position, ST = Styrka, UK och SF = Utkast och straffar). Kapitlet skrivs inte ut.
+
+**Lägga till en film** (kräver skrivrätt till repot):
+1. Koda om filmen: `ffmpeg -i in.mov -vf "scale=-2:720" -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 96k -movflags +faststart RE1.mp4`. Håll filerna under cirka 30 MB. GitHub varnar vid 50 MB och stoppar vid 100 MB.
+2. Lägg filen i `video/`, döpt efter koden (`RE1.mp4`, `PO3.mp4` …). Filnamn får bara innehålla bokstäver, siffror, `-`, `_` och `.`, och sluta på `.mp4`.
+3. Valfri förhandsbild: `ffmpeg -i RE1.mp4 -frames:v 1 -vf scale=-2:360 RE1.jpg`.
+4. Lägg en rad i `video/videor.json`: `{"kod":"RE1","titel":"Spegeln","fil":"video/RE1.mp4","poster":"video/RE1.jpg","text":"Kort beskrivning."}` (`poster` och `text` är valfria).
+5. Pusha. Sidan visar filmen så fort Pages har byggt om.
+
+**Tittare kan inte lägga till något.** Sidan är statisk och har ingen uppladdning: det finns inget i vyn som skriver till `video/` eller `videor.json`, och Pages kan inte ta emot filer. Bara den som kan pusha till repot kan lägga till eller ta bort filmer. Filmerna visas med `controlsList="nodownload"` och utan högerklicksmeny, vilket bara avskräcker. Den som vill kan alltid hämta filen via webbadressen, som för alla publika filer på Pages.

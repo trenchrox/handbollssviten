@@ -79,3 +79,16 @@ Alla appar ligger på samma origin (`trenchrox.github.io`) och delar därför `l
 3. Lägg profilen på startsidan.
 4. Ändra Matchanalys först (minst ändring), sedan Teambuilder och Tracker. Playbook sist, om alls.
 5. Varje app får en ny version enligt sina egna versionsregler, och ändringen provas i en webbläsare och på en iPad.
+
+## Manualer
+
+Startsidans kort **Manualer** öppnar `manualer.html`, som listar en manual per app som PDF i `manualer/`. Manualerna har sin källa i respektive apps repo och kopieras hit. Uppdatera kopian när en manual ändras.
+
+| App | Fil här | Källa |
+| --- | --- | --- |
+| Tracker | `manualer/tracker-manual.pdf` | Genereras ur appens hjälpvy (`#vHelp`) med `node manualer/bygg_tracker_manual.cjs [sökväg till handball_g_trk_ipad.html]`. Texten ändras i Tracker-appen. |
+| Teambuilder | `manualer/teambuilder-handbok.pdf` | `docs/teambuilder-handbok-v<N>.pdf` i `trenchrox/teambuilder-handboll` (byggs ur `docs/handbok.html`). Repot är privat, så kopian här är offentlig. |
+| Playbook | `manualer/playbook-guide.pdf` | `docs/Playbook-guide.pdf` i `trenchrox/playbook-handboll` (byggs ur `docs/guide.html` med `node docs/make_guide_pdf.cjs`). |
+| Matchanalys | `manualer/matchanalys-manual.pdf` | `docs/matchanalys-manual.pdf` i `trenchrox/match_summary` (byggs ur `docs/manual.html` med `node docs/make_manual_pdf.cjs`). |
+
+Sidantalen på `manualer.html` ska stämma med PDF:erna. Målvaktskompendiet och dess PDF:er är inga appmanualer och ligger utanför `manualer/`.

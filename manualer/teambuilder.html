@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<title>Teambuilder v15 – handbok</title>
+<title>Teambuilder v16 – handbok</title>
 <style>
   @page { size: A4; margin: 18mm 16mm 16mm; }
   * { box-sizing: border-box; }
@@ -86,7 +86,7 @@
 <div class="title">
   <h1>Team<b>builder</b> – handbok</h1>
   <div class="sub">Steg för steg: från tom app till utskrivna lag.</div>
-  <div class="meta">Version v15 · oktober 2026 · fristående HTML-app för ungdomshandboll</div>
+  <div class="meta">Version v16 · oktober 2026 · fristående HTML-app för ungdomshandboll</div>
 </div>
 
 <div class="toc">
@@ -102,16 +102,17 @@
   <div><b>10</b> Justera en färdig indelning</div>
   <div><b>11</b> Skriv ut och spara som PDF</div>
   <div><b>12</b> Cup</div>
-  <div><b>13</b> Skicka ett cuplag på granskning</div>
-  <div><b>14</b> Historik</div>
-  <div><b>15</b> Inställningar</div>
-  <div><b>16</b> Backup, delning och byte av enhet</div>
-  <div><b>17</b> Integritet – vad appen inte gör</div>
-  <div><b>18</b> Om något strular</div>
+  <div><b>13</b> Laguppställning</div>
+  <div><b>14</b> Skicka ett cuplag på granskning</div>
+  <div><b>15</b> Historik</div>
+  <div><b>16</b> Inställningar</div>
+  <div><b>17</b> Backup, delning och byte av enhet</div>
+  <div><b>18</b> Integritet – vad appen inte gör</div>
+  <div><b>19</b> Om något strular</div>
 </div>
 
 <h2><span class="n">1</span>Installera och första starten</h2>
-<p class="lead">Teambuilder är <em>en enda fil</em>: <code>teambuilder-v15.html</code>. Inget konto, ingen
+<p class="lead">Teambuilder är <em>en enda fil</em>: <code>teambuilder-v16.html</code>. Inget konto, ingen
 installation, ingen internetanslutning. Appen körs i webbläsaren på den digitala enhet du väljer –
 dator, pekplatta eller telefon – och all data stannar på just den enheten.</p>
 
@@ -444,7 +445,43 @@ Träningsvyn minns dessutom vad du använde senast.</div>
     laget eller ett du väljer själv. Lagen slumpas inte om.</li>
 </ol>
 
-<h2><span class="n">13</span>Skicka ett cuplag på granskning</h2>
+<h2><span class="n">13</span>Laguppställning</h2>
+<p class="lead">När cuplagen är satta kan du ställa upp varje lag på plan – ett försvar och ett
+anfall – och skriva ut det inför matchen.</p>
+<ol>
+  <li>Tryck <b class="ui">Laguppställning</b> på lagkortet. Planen är samma halvplan som i
+    truppens positionsflik, med 6- och 9-meterslinjen på rätt avstånd.</li>
+  <li>Välj <b class="ui">Försvar</b> eller <b class="ui">Anfall</b> högst upp.</li>
+  <li>Tryck på ett <b>plustecken</b> på planen – eller på namnraden under den – och välj spelare.
+    Står spelaren redan på en annan plats flyttas hen dit, och den gamla platsen blir tom.</li>
+  <li><b class="ui">Fyll i förslag</b> sätter ut hela laget efter spelarnas positioner i truppen.
+    Det är en utgångspunkt att ändra i, inte ett facit.</li>
+  <li><b class="ui">Skriv ut</b> ger båda uppställningarna och bänken på ett papper.</li>
+</ol>
+
+<h3>Försvaret</h3>
+<p>Fyra system att välja mellan: <b class="ui">6-0</b>, <b class="ui">5-1</b>,
+<b class="ui">3-2-1</b> och <b class="ui">3-3</b>. Målvakten har en egen plats i målet.
+Platserna är numrerade från vänster, och i de system som har flera led numreras det bakre ledet
+först. Därför står spelarna kvar på sina nummer när du byter system – byter du 6-0 mot 3-2-1
+flyttas brickorna, men ingen byter plats i laget.</p>
+
+<h3>Anfallet</h3>
+<p>Sex platser: vänstersexa, vänsternia, mittnia, högernia, högersexa och linje. Ingen
+målvaktsruta – i anfall står hen i andra änden av planen. Samma spelare kan givetvis stå i både
+försvar och anfall, och gör det oftast.</p>
+
+<h3>Avbytarbänken</h3>
+<p>Bänken fyller sig själv: alla i laget som inte står på planen hamnar där. Du behöver inte hålla
+två listor i huvudet, och ingen kan bli bortglömd. Bänken gäller den uppställning du tittar på, så
+målvakterna syns på anfallets bänk.</p>
+
+<div class="tip"><span class="lbl">Namnen står under planen</span>
+På planen bär brickan spelarens initialer, inte hela namnet. I en 3-2-1 står spelarna ett par meter
+isär, och utskrivna namn skulle ligga i varandra. Listan under planen visar plats och namn, och den
+går att trycka på precis som brickorna.</div>
+
+<h2><span class="n">14</span>Skicka ett cuplag på granskning</h2>
 <p class="lead">Låt en assisterande tränare titta på lagen och flytta om – utan konto, utan app och
 utan att något ändras hos dig förrän du sagt ja.</p>
 <ol>
@@ -472,7 +509,7 @@ Har du själv lagt till en spelare efter att du skickade filen rörs hen inte: s
 hen. Och har ni ändrat samtidigt är det du som ser skillnaden och avgör, i stället för att den som
 sparade sist vinner tyst.</p>
 
-<h2><span class="n">14</span>Historik</h2>
+<h2><span class="n">15</span>Historik</h2>
 <p class="lead">Varje indelning sparas automatiskt. Här ser du vad du gjorde och kan återanvända det.</p>
 <ol>
   <li>Gå till <b class="ui">Historik</b> och tryck på en post för att fälla ut lagen.</li>
@@ -482,7 +519,7 @@ sparade sist vinner tyst.</p>
 </ol>
 <p>Historiken är också underlaget för parametern <b class="ui">Variera mot förra gången</b>.</p>
 
-<h2><span class="n">15</span>Inställningar</h2>
+<h2><span class="n">16</span>Inställningar</h2>
 <table>
   <tr><th>Inställning</th><th>Vad den gör</th></tr>
   <tr><td>Truppens namn</td><td>Syns i menyn och som rubrik på utskrifter.</td></tr>
@@ -500,7 +537,7 @@ PIN-låset, <b class="ui">Hem</b> och växeln för mörkt/ljust läge – åtkom
 <b class="ui">Hem</b> tar dig tillbaka till Handbollssvitens startsida (där alla appar ligger). Det är en vanlig länk
 till en annan webbadress: din trupp och dina inställningar påverkas inte, och ingen data följer med.</p>
 
-<h2><span class="n">16</span>Backup, delning och byte av enhet</h2>
+<h2><span class="n">17</span>Backup, delning och byte av enhet</h2>
 <p class="lead">Det finns två exporter, och skillnaden är viktig.</p>
 <table>
   <tr><th>Export</th><th>Innehåller</th></tr>
@@ -528,7 +565,7 @@ truppen på datorn och ta med den ut i hallen. Kom ihåg att enheterna inte prat
 Appen sparar bara lokalt i webbläsaren. Raderar du webbdata, byter enhet eller nollställer appen
 finns inget moln att hämta tillbaka från. Backupen är din enda kopia.</div>
 
-<h2><span class="n">17</span>Integritet – vad appen inte gör</h2>
+<h2><span class="n">18</span>Integritet – vad appen inte gör</h2>
 <p class="lead">Appen är byggd för att veta så lite som möjligt om barn.</p>
 <ul>
   <li>Ingen server, inget konto, ingen inloggning, ingen synk. Data lämnar aldrig enheten om du inte
@@ -545,7 +582,7 @@ Bedömningar av barn ska inte ligga på en server, och de ska inte kunna läsas 
 siffrorna både låsta och utestängda från allt appen skriver ut eller exporterar. Det enda som kan
 läcka dem är en full backup – behandla den som en privat fil.</div>
 
-<h2><span class="n">18</span>Om något strular</h2>
+<h2><span class="n">19</span>Om något strular</h2>
 <table>
   <tr><th>Symtom</th><th>Vad du gör</th></tr>
   <tr><td>Truppen är borta efter omstart</td><td>Webbläsaren sparar inte data för filen. Se den orange rutan i avsnitt 1 – lägg filen på en webbadress. Har du en backup: återställ den efteråt.</td></tr>
@@ -561,7 +598,7 @@ läcka dem är en full backup – behandla den som en privat fil.</div>
 </table>
 
 <footer>
-  Teambuilder v15 · handbok · Uppdaterad oktober 2026 · All data lagras lokalt på enheten.
+  Teambuilder v16 · handbok · Uppdaterad oktober 2026 · All data lagras lokalt på enheten.
   Bedömningar visas aldrig i resultat, utskrifter eller exporter.
 </footer>
 

@@ -107,3 +107,7 @@ Kapitel 9 i `malvaktskompendium_html_v1.html` visar filmer till övningarna i Ö
 5. Pusha. Sidan visar filmen så fort Pages har byggt om.
 
 **Tittare kan inte lägga till något.** Sidan är statisk och har ingen uppladdning: det finns inget i vyn som skriver till `video/` eller `videor.json`, och Pages kan inte ta emot filer. Bara den som kan pusha till repot kan lägga till eller ta bort filmer. Filmerna visas med `controlsList="nodownload"` och utan högerklicksmeny, vilket bara avskräcker. Den som vill kan alltid hämta filen via webbadressen, som för alla publika filer på Pages.
+
+## Träna hemma (nedladdning i kompendiet)
+
+Kapitlet "Träna hemma" skrivs inte längre ut från sidan. Det finns en länk i menyn (på bred skärm) och en knapp sist i kapitlet som laddar ner `Trana_hemma.pdf` (en A4-sida). Kompendiets utskriftslayout har kvar läget `body.only-hemma`, som skriver ut bara det kapitlet, och `node tools/bygg_trana_hemma.cjs` använder det för att bygga PDF:en. Kör om skriptet när kapitlet ändras. Vill ni hellre ha en egen PDF, lägg den som `Trana_hemma.pdf` i repots rot.

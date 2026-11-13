@@ -110,4 +110,4 @@ Kapitel 9 i `malvaktskompendium_html_v1.html` visar filmer till övningarna i Ö
 
 ## Träna hemma (nedladdning i kompendiet)
 
-Kapitlet "Träna hemma" skrivs inte längre ut från sidan. Det finns en länk i menyn (på bred skärm) och en knapp sist i kapitlet som laddar ner `Trana_hemma.pdf` (en A4-sida). Kompendiets utskriftslayout har kvar läget `body.only-hemma`, som skriver ut bara det kapitlet, och `node tools/bygg_trana_hemma.cjs` använder det för att bygga PDF:en. Kör om skriptet när kapitlet ändras. Vill ni hellre ha en egen PDF, lägg den som `Trana_hemma.pdf` i repots rot.
+Kapitlet "Träna hemma" skrivs inte ut från sidan. Det finns en länk i menyn (på bred skärm) och en knapp sist i kapitlet som laddar ner `Trana_hemma_malvakt_LUGI.pdf` (en A4-sida, gjord av klubben). Vill ni byta PDF, lägg den nya filen i repots rot och ändra de två länkarna (`#dl-hemma` och `#dl-hemma-ch`) i `malvaktskompendium_html_v1.html`, eller behåll filnamnet.

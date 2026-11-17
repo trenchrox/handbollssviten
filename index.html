@@ -35,7 +35,7 @@
   .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 640px) {
     .grid { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .grid a.card.wide { grid-column: 1 / -1; min-height: 140px; }
+    .grid .card.wide { grid-column: 1 / -1; min-height: 140px; }
   }
   a.card, div.card {
     display: flex; flex-direction: column; gap: 14px; min-height: 168px; padding: 22px;
@@ -96,15 +96,15 @@
       <span class="desc">Rita spelmönster och spela upp dem steg för steg.</span>
     </a>
 
-    <div class="card disabled" style="--c: #c9a7ff" aria-disabled="true">
+    <a class="card" style="--c: #2dd4bf" href="https://trenchrox.github.io/practiceplanner/">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 40V8M8 40h34"/><rect x="14" y="26" width="6" height="10" rx="1"/><rect x="25" y="18" width="6" height="18" rx="1"/><rect x="36" y="10" width="6" height="26" rx="1"/>
+          <rect x="9" y="8" width="30" height="34" rx="3"/><path d="M18 8V6h12v2M18 8v3h12V8"/><path d="M15 21l2 2 4-4M15 31l2 2 4-4M26 21h8M26 31h8"/>
         </svg>
       </span>
-      <span class="name">Matchanalys<span class="beta">Under utveckling</span></span>
-      <span class="desc">Se vad laget behöver träna på utifrån matchrapporterna.</span>
-    </div>
+      <span class="name">PracticePlanner<span class="beta">Beta</span></span>
+      <span class="desc">Planera träningspasset med tider, övningar och upplägg.</span>
+    </a>
 
     <a class="card" style="--c: #e0405f" href="malvaktskompendium_html_v1.html">
       <span class="ico" aria-hidden="true">
@@ -146,6 +146,16 @@
       <span class="name">Manualer</span>
       <span class="desc">Guider för alla apparna som PDF.</span>
     </a>
+
+    <div class="card disabled wide" style="--c: #c9a7ff" aria-disabled="true">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 40V8M8 40h34"/><rect x="14" y="26" width="6" height="10" rx="1"/><rect x="25" y="18" width="6" height="18" rx="1"/><rect x="36" y="10" width="6" height="26" rx="1"/>
+        </svg>
+      </span>
+      <span class="name">Matchanalys<span class="beta">Under utveckling</span></span>
+      <span class="desc">Se vad laget behöver träna på utifrån matchrapporterna.</span>
+    </div>
   </nav>
 
   <footer>Apparna fungerar var för sig och lagrar allt lokalt på enheten.</footer>

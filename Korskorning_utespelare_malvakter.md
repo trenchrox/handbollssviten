@@ -19,7 +19,7 @@
 | Passa runt | Passa och följ, fånga i skålen | Följa bollen längs halvcirkeln, stå still när bollen kommer fram | FP5, FP3 | Placering i mål: ”Innan skottet” | 9–14 |
 | Inspel till linjen | Passa in till en spelare på 6 meter | Kliva fram från halvcirkeln, bollen mitt framför bröstet | FP3 | Placering i mål: inspel, Blicken på bollen | 11–14 |
 | Hoppskott | Hoppskott i tre tempon | Vinkel först och stå still vid skottet | SK4 | PO4 | 13–14 |
-| Fint och skott | Skott med eller utan fint från nio meter | Inte gå på finten – vänta tills bollen släpps | SK4 | PO5 | 11–14 |
+| Fint och skott | Skott med eller utan fint från nio meter | Inte gå på finten – vänta tills bollen släpps | SK1 | PO5 | 11–14 |
 | Kant – skott från vinkel | Skott från kanten (lugnt) | Nära första stolpen, kliv ut när skytten hoppar | SK6 | Placering i mål: kant | 13–14 |
 | Kast på punkt | Kanterna tajmar löpningen mot konen | Utkast i ett steg mot en bestämd punkt | FS8 | UK1, UK2 | 9–14 |
 | Målvakten startar | Kanterna startar direkt, fånga över axeln | Rädda och kasta direkt | FS3, FS2 | UK2 | 11–14 |

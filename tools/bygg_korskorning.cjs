@@ -3,8 +3,10 @@
  *   npm i playwright            # engångsinstallation
  *   node tools/bygg_korskorning.cjs
  *
- * Texten ändras i markdownfilen i repots rot. Skriptet gör om den till korskorning.html
- * (med en fast översta rad: Hem, Startsidan, Ladda ner PDF) och Korskorning_utespelare_malvakter.pdf.
+ * Texten ändras i markdownfilen i repots rot. Skriptet gör om den till korskorning.html i samma
+ * utseende som målvaktskompendiet och Grunder och skott (vänsterspalt, kapitelark, kort) och bygger
+ * Korskorning_utespelare_malvakter.pdf ur sidan. CSS, LUGI-märke, omslagsbild och skript hämtas ur
+ * malvaktskompendium_html_v1.html respektive utespelare.html, så de följer med när de ändras.
  * Markdown-stödet är bara det filen använder: rubriker, stycken, punktlistor, tabeller, fet och kursiv.
  */
 const { chromium } = require('playwright');
@@ -20,71 +22,98 @@ const CHROMIUM = '/opt/pw-browsers/chromium';
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*]+)\*/g, '<i>$1</i>');
 
-function md2html(md) {
+// ---- mallar: CSS, märke och skript ur kompendiet, omslagsbild ur Grunder och skott
+const mv = fs.readFileSync(path.join(ROOT, 'malvaktskompendium_html_v1.html'), 'utf8');
+const ut = fs.readFileSync(path.join(ROOT, 'utespelare.html'), 'utf8');
+const CSS = mv.slice(mv.indexOf('<style>'), mv.indexOf('</style>')) + `
+.sheet.cover h1{font-size:44px}
+.lead a,.card a{color:var(--red)}
+.tw table{min-width:640px}
+.tw td:first-child{font-weight:700}
+.tw td:last-child{white-space:nowrap}
+`;
+const CREST = /<div class="brand"><img src="(data:[^"]+)"/.exec(mv)[1];
+const COVER = /<section class="sheet cover" id="omslag">\s*(<img [^>]+>)/.exec(ut)[1];
+const SCRIPT = /<script>\(function \(\) \{\n  var KEY.*?\}\)\(\);\n<\/script>/s.exec(mv)[0].replace(/var KEY = "[^"]+"/, 'var KEY = "lugi-korskorning-v1"');
+
+// ---- markdown till avsnitt
+function parse(md) {
   const lines = md.replace(/\r/g, '').split('\n');
-  let out = '', i = 0, title = '';
+  const secs = []; let title = '', cur = null, i = 0;
+  const push = h => (cur ? cur.html += h : null);
   while (i < lines.length) {
     const l = lines[i];
     if (!l.trim()) { i++; continue; }
     let m;
     if ((m = /^(#{1,3})\s+(.*)$/.exec(l))) {
-      const n = m[1].length; if (n === 1 && !title) title = m[2];
-      out += `<h${n}>${inline(m[2])}</h${n}>\n`; i++; continue;
+      if (m[1].length === 1) title = m[2];
+      else if (m[1].length === 2) { cur = { h: m[2], html: '', lead: '' }; secs.push(cur); }
+      else push(`<h3>${inline(m[2])}</h3>\n`);
+      i++; continue;
     }
     if (/^\s*[-*]\s+/.test(l)) {
-      out += '<ul>\n';
-      while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) { out += `<li>${inline(lines[i].replace(/^\s*[-*]\s+/, ''))}</li>\n`; i++; }
-      out += '</ul>\n'; continue;
+      let ul = '<ul class="sq">';
+      while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) { ul += `<li>${inline(lines[i].replace(/^\s*[-*]\s+/, ''))}</li>`; i++; }
+      push(`<div class="card full">${ul}</ul></div>\n`); continue;
     }
     if (l.trim().startsWith('|')) {
       const rows = [];
       while (i < lines.length && lines[i].trim().startsWith('|')) { rows.push(lines[i].trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim())); i++; }
-      const head = rows[0], body = rows.slice(2);   // rad 2 är avgränsaren
-      out += '<div class="tw"><table><thead><tr>' + head.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>' +
-        body.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>\n';
+      const head = rows[0], body = rows.slice(2);
+      push('<div class="tw"><table><thead><tr>' + head.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>' +
+        body.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>\n');
       continue;
     }
     let p = l.trim(); i++;
     while (i < lines.length && lines[i].trim() && !/^(#{1,3}\s|\s*[-*]\s|\|)/.test(lines[i])) { p += ' ' + lines[i].trim(); i++; }
-    out += `<p>${inline(p)}</p>\n`;
+    if (cur) cur.html += `<p>${inline(p)}</p>\n`; else secs.intro = (secs.intro || '') + `<p class="lead">${inline(p)}</p>\n`;
   }
-  return { body: out, title };
+  return { title, secs, intro: secs.intro || '' };
 }
 
-const { body, title } = md2html(fs.readFileSync(MD, 'utf8'));
+const { title, secs, intro } = parse(fs.readFileSync(MD, 'utf8'));
+const slug = (s, n) => 'k' + (n + 1);
+const nav = '<nav aria-label="Avsnitt"><ol>' + secs.map((s, n) =>
+  `<li data-li="${slug(s, n)}"><div class="row"><a href="#${slug(s, n)}" data-ch="${slug(s, n)}"><span>${n + 1}</span>${esc(s.h)}</a></div></li>`).join('') + '</ol></nav>';
+const sheets = secs.map((s, n) =>
+  `<section class="sheet" id="${slug(s, n)}">\n<header class="ch-head"><span class="ch-num">${n + 1}</span><h2>${inline(s.h)}</h2></header>\n${s.html}</section>`).join('\n');
+
 const page = `<!DOCTYPE html>
-<html lang="sv"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)} – Handbollssviten</title>
-<style>
-  @page { size: A4 landscape; margin: 14mm 14mm 16mm; }
-  :root { --accent: #be185d; --ink: #1b1b1f; --grey: #5a5a63; --line: #ecd3e1; --tint: #fdf2f8; }
-  * { box-sizing: border-box; }
-  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; color: var(--ink); font: 400 10.5pt/1.5 "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  h1 { font-size: 26pt; line-height: 1.1; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 3px solid #f472b6; }
-  h2 { font-size: 15pt; color: var(--accent); margin: 22px 0 6px; break-after: avoid; }
-  h3 { font-size: 12pt; margin: 14px 0 4px; break-after: avoid; }
-  p { margin: 0 0 8px; max-width: 110ch; } ul { margin: 0 0 10px; padding-left: 20px; } li { margin: 3px 0; }
-  b { font-weight: 700; }
-  .tw { overflow-x: auto; margin: 6px 0 14px; }
-  table { border-collapse: collapse; width: 100%; font-size: 9.2pt; }
-  th { background: #fce7f3; color: var(--accent); text-align: left; padding: 6px 8px; border-bottom: 2px solid var(--accent); vertical-align: bottom; }
-  td { padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  tr { break-inside: avoid; }
-  tbody tr:nth-child(even) td { background: var(--tint); }
-  .mbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; gap: 8px; align-items: center; background: #1c1c1e; padding: 10px 14px; font: 600 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  .mbar a { color: #fff; text-decoration: none; border: 1px solid #4a4b52; padding: 8px 12px; white-space: nowrap; }
-  .mbar a:hover { border-color: #f472b6; color: #f472b6; }
-  .mbar .sp { flex: 1; }
-  .mbar a.dl { background: #f472b6; color: #000; border-color: #f472b6; }
-  .mbar a.dl:hover { background: #fff; border-color: #fff; color: #000; }
-  @media screen { body { max-width: 1060px; margin: 0 auto; padding: 66px 16px 48px; } table { min-width: 720px; } }
-  @media screen and (max-width: 640px) { .mbar .long { display: none; } .mbar { padding: 8px 10px; gap: 6px; } .mbar a { padding: 8px 10px; } }
-  @media print { .mbar { display: none; } }
-</style></head><body>
-<div class="mbar"><a href="index.html">⌂ Hem</a><a href="utespelare.html">← Grunder och skott</a><span class="sp"></span><a class="dl" href="${PDF}" download><span class="long">⬇ Ladda ner </span>PDF</a></div>
-${body}</body></html>
+<meta name="description" content="LUGI Handbollssviten: övningar där utespelare och målvakter tränar samtidigt.">
+${CSS}</style>
+</head>
+<body>
+<a class="skip" href="#innehall">Hoppa till innehållet</a>
+<aside class="rail">
+<div class="brand"><img src="${CREST}" width="240" height="224" alt="LUGI" decoding="async"><div><strong>Korskörning</strong><span>Handbollssviten</span></div></div>
+${nav}
+<div class="actions">
+<a class="home" id="navHome" href="index.html">⌂ Hem</a>
+<a class="pdf" id="dl-kors" href="${PDF}" download>Ladda ner PDF</a>
+<a class="pdf" id="nav-ute" href="utespelare.html">Grunder och skott</a>
+<a class="pdf" id="nav-mv" href="malvaktskompendium_html_v1.html">Målvaktskompendium</a>
+</div>
+<p class="ver">Utespelare och målvakter</p>
+</aside>
+<main id="innehall">
+<section class="sheet cover" id="omslag">
+${COVER}
+<h1>Korskörning</h1>
+<p class="cover-sub">Utespelare och målvakter tränar samtidigt</p>
+<div class="cover-logos"><img src="${CREST}" width="240" height="224" alt="LUGI" decoding="async"></div>
+</section>
+<section class="sheet" id="intro">
+<header class="ch-head"><h2>${esc(title.replace(/^Korskörning – /, 'Korskörning: '))}</h2></header>
+${intro}</section>
+${sheets}
+</main>
+${SCRIPT}</body>
+</html>
 `;
 fs.writeFileSync(HTML, page);
 
@@ -93,7 +122,7 @@ fs.writeFileSync(HTML, page);
   const p = await browser.newPage();
   await p.goto('file://' + HTML);
   await p.pdf({ path: path.join(ROOT, PDF), preferCSSPageSize: true, printBackground: true, displayHeaderFooter: true, headerTemplate: '<span></span>',
-    footerTemplate: '<div style="width:100%;font:8pt Arial,sans-serif;color:#777;padding:0 14mm;display:flex;justify-content:space-between"><span>Korskörning – utespelare och målvakter · LUGI Handboll</span><span class="pageNumber"></span></div>' });
+    footerTemplate: '<div style="width:100%;font:8pt Arial,sans-serif;color:#777;padding:0 14mm;display:flex;justify-content:space-between"><span>Korskörning – utespelare och målvakter · LUGI Handbollssviten</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>' });
   await browser.close();
   console.log('Skrev', HTML, fs.statSync(HTML).size, 'byte och', PDF, fs.statSync(path.join(ROOT, PDF)).size, 'byte');
 })();

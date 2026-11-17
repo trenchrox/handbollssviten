@@ -27,6 +27,7 @@
 | Polska vågor – variant 3: satsning och skott | Fånga och passa i full fart, 9 m-satsning utan studs | Skott efter fart – stå still i rätt vinkel när skytten sätter av | FS9 | PO4, Placering i mål: 9 meter | 11–14 |
 | Köpenhamn – fram och tillbaka | Passningar i fart, avslut vid 9 meter | Skott i fart – och starta nästa våg med ett snabbt utkast | FS10 | UK1, UK2, Placering i mål: 9 meter | 11–14 |
 | Rebounder – rebound och skott | Fånga returen i fart, tre steg och skott | Skott efter en rebound – ny placering snabbt | Rebounder | Placering i mål: grunden | 11–14 |
+| Köpenhamn med M6 | Passningar i fart, 4 mot 3 och hem och försvara | Många avslut i fart – stå still i rätt vinkel och starta nästa anfall med snabbt utkast | FS11 | UK1, UK2, Placering i mål | 11–14 |
 | Andra vågen | Ta emot i fart och gå direkt på målet | Ny placering snabbt när bollen byter håll | FS6 | Placering i mål: grunden | 13–14 |
 | Ropa färgen | Kontrollerade kast med färgade bollar – precision | Ropa färgen, händerna som sköld | HA4 (precision) | Ropa färgen, Blicken på bollen | 9–14 |
 | Straffduell | Straffkast under lite press | Straffrutin, vänta ut finten | – | SF1, SF2 | 9–14 |

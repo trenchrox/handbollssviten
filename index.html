@@ -27,6 +27,9 @@
     padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
     display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;
   }
+  body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.7) 55%, rgba(8,8,10,0.88) 100%),
+      url(bakgrund.jpg) 35% 62% / cover no-repeat; }
   main { width: 100%; max-width: 860px; }
   header { text-align: center; margin-bottom: 32px; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

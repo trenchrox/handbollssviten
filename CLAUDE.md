@@ -111,3 +111,12 @@ Kapitel 9 i `malvaktskompendium_html_v1.html` visar filmer till övningarna i Ö
 ## Träna hemma (nedladdning i kompendiet)
 
 Kapitlet "Träna hemma" skrivs inte ut från sidan. Det finns en länk i menyn (på bred skärm) och en knapp sist i kapitlet som laddar ner `Trana_hemma_malvakt_LUGI.pdf` (en A4-sida, gjord av klubben). Vill ni byta PDF, lägg den nya filen i repots rot och ändra de två länkarna (`#dl-hemma` och `#dl-hemma-ch`) i `malvaktskompendium_html_v1.html`, eller behåll filnamnet.
+
+## Utespelare: Grunder och skott, och Korskörning
+
+Startsidan har två kort bredvid målvaktskompendiet, och **Manualer** ligger underst.
+
+- **Grunder och skott** (`utespelare.html`) är en omslagssida för handboken `Grunder_och_skott_utespelare.pdf` (25 sidor, gjord av klubben). Sidan har omslagsbilden (`utespelare_omslag.webp`, klippt ur PDF:ens första sida), knapparna **Ladda ner PDF** och **Öppna i webbläsaren**, och en innehållsförteckning som länkar till rätt sida i PDF:en (`#page=`, fysisk sida = tryckt sida + 1). Byts PDF:en ska innehållsförteckningen i `utespelare.html` och omslagsbilden följa med.
+- **Korskörning** (`korskorning.html`) är övningar där utespelare och målvakter tränar samtidigt. Texten bor i `Korskorning_utespelare_malvakter.md`. `node tools/bygg_korskorning.cjs` gör om den till `korskorning.html` (med en fast översta rad: **Hem**, **← Grunder och skott**, **Ladda ner PDF**) och `Korskorning_utespelare_malvakter.pdf`. Ändra texten i md-filen och kör om skriptet. Skriptet förstår bara det filen använder: rubriker, stycken, punktlistor, tabeller, fet och kursiv.
+
+Koderna i Korskörning (SK, FP, FS, HA, LK, PO, UK, SF och RE) pekar på övningar i Grunder och skott, målvaktskompendiet (Övningsbanken) och Placering i mål.

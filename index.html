@@ -35,7 +35,7 @@
   .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 640px) {
     .grid { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .grid a.card:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 140px; }
+    .grid a.card.wide { grid-column: 1 / -1; min-height: 140px; }
   }
   a.card {
     display: flex; flex-direction: column; gap: 14px; min-height: 168px; padding: 22px;
@@ -114,7 +114,28 @@
       <span class="desc">Målvaktsträning för unga målvakter att läsa och ta med.</span>
     </a>
 
-    <a class="card" style="--c: #5ac8fa" href="manualer.html">
+
+    <a class="card" style="--c: #ff9f0a" href="utespelare.html">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="16"/><path d="M24 8v8M24 32v8M9 19l7 3M39 19l-7 3M14 38l5-6M34 38l-5-6M16 22l8-6 8 6-3 10H19z"/>
+        </svg>
+      </span>
+      <span class="name">Grunder och skott</span>
+      <span class="desc">Fånga, passa och skjuta i fart. Handbok för utespelare 9–14 år.</span>
+    </a>
+
+    <a class="card wide" style="--c: #f472b6" href="korskorning.html">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 14h20l-5-5M28 14l-5 5M40 34H20l5-5M20 34l5 5"/><path d="M8 24h32" stroke-dasharray="3 5"/>
+        </svg>
+      </span>
+      <span class="name">Korskörning</span>
+      <span class="desc">Träna utespelare och målvakter tillsammans: övningar där båda får något ut av det, och ett förslag på gemensamt pass.</span>
+    </a>
+
+    <a class="card wide" style="--c: #5ac8fa" href="manualer.html">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8M18 24h14M18 30h14M18 36h8"/>

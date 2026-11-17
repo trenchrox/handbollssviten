@@ -84,13 +84,14 @@ Alla appar ligger på samma origin (`trenchrox.github.io`) och delar därför `l
 
 Startsidans kort **Manualer** öppnar `manualer.html`, som listar en manual per app. Varje manual finns som webbsida (`manualer/<app>.html`, med en fast översta rad: **Hem**, **Manualer** och **Ladda ner PDF**) och som PDF (`manualer/<namn>.pdf`), på samma sätt som målvaktskompendiet. Källan bor i respektive apps repo och kopieras hit.
 
-Webbsidorna byggs med `node manualer/bygg.cjs`. Skriptet läser källorna från de lokala klonerna (sökvägarna kan sättas med miljövariablerna `TRACKER_HTML`, `TEAMBUILDER_HANDBOK`, `PLAYBOOK_GUIDE` och `MATCHANALYS_MANUAL`), lägger på översta raden och en liten webblayout, och bygger också Trackers PDF. De andra tre PDF:erna byggs i sina egna repon och kopieras in. Kör om skriptet efter att en källa har ändrats.
+Webbsidorna byggs med `node manualer/bygg.cjs`. Skriptet läser källorna från de lokala klonerna (sökvägarna kan sättas med miljövariablerna `TRACKER_HTML`, `TEAMBUILDER_HANDBOK`, `PLAYBOOK_GUIDE`, `PRACTICEPLANNER_MANUAL` och `MATCHANALYS_MANUAL`), lägger på översta raden och en liten webblayout, och bygger också Trackers PDF. De andra PDF:erna byggs i sina egna repon och kopieras in. Kör om skriptet efter att en källa har ändrats.
 
 | App | Webbsida och PDF här | Källa |
 | --- | --- | --- |
 | Tracker | `manualer/tracker.html`, `tracker-manual.pdf` | Texten genereras ur appens hjälpvy (`#vHelp`) och ändras i Tracker-appen. Skärmbilderna tas ur appen med påhittad exempeldata (`manualer/tracker_bilder.cjs`), och sidmallen med numrerade markeringar finns i `manualer/tracker_html.cjs`. Hjälprubriker som inte finns i mallen hamnar sist under "Mer i appen". |
 | Teambuilder | `manualer/teambuilder.html`, `teambuilder-handbok.pdf` | `docs/handbok.html` och `docs/teambuilder-handbok-v<N>.pdf` i `trenchrox/teambuilder-handboll`. Repot är privat, så kopian här är offentlig. |
 | Playbook | `manualer/playbook.html`, `playbook-guide.pdf` | `docs/guide.html` och `docs/Playbook-guide.pdf` i `trenchrox/playbook-handboll` (PDF med `node docs/make_guide_pdf.cjs`). |
+| PracticePlanner | `manualer/practiceplanner.html`, `practiceplanner-manual.pdf` | `docs/manual.html` och `docs/practiceplanner-manual.pdf` i `trenchrox/practiceplanner` (PDF med `node docs/make_manual_pdf.cjs`). Skärmbilderna ligger inbäddade i sidan. |
 | Matchanalys | `manualer/matchanalys.html`, `matchanalys-manual.pdf` | `docs/manual.html` och `docs/matchanalys-manual.pdf` i `trenchrox/match_summary` (PDF med `node docs/make_manual_pdf.cjs`). |
 
 Sidantalen på `manualer.html` ska stämma med PDF:erna. Målvaktskompendiet och dess PDF:er är inga appmanualer och ligger utanför `manualer/`.

@@ -9,10 +9,11 @@
  *   Tracker      ur appens hjälpvy (#vHelp). Texten ändras i Tracker-appen.
  *   Teambuilder  docs/handbok.html i teambuilder-handboll
  *   Playbook     docs/guide.html i playbook-handboll
+ *   PracticePlanner  docs/manual.html i practiceplanner
  *   Matchanalys  docs/manual.html i match_summary
  *
  * Sökvägar kan anges som miljövariabler: TRACKER_HTML, TEAMBUILDER_HANDBOK, PLAYBOOK_GUIDE,
- * MATCHANALYS_MANUAL. Skriptet bygger också Trackers PDF. De andra PDF:erna byggs i sina egna
+ * PRACTICEPLANNER_MANUAL, MATCHANALYS_MANUAL. Skriptet bygger också Trackers PDF. De andra PDF:erna byggs i sina egna
  * repon (se CLAUDE.md) och kopieras in som manualer/<namn>.pdf.
  */
 const { chromium } = require('playwright');
@@ -24,9 +25,10 @@ const SRC = {
   tracker: process.env.TRACKER_HTML || `${HOME}/handball_g_trk/handball_g_trk_ipad.html`,
   teambuilder: process.env.TEAMBUILDER_HANDBOK || `${HOME}/teambuilder-handboll/docs/handbok.html`,
   playbook: process.env.PLAYBOOK_GUIDE || `${HOME}/playbook-handboll/docs/guide.html`,
+  practiceplanner: process.env.PRACTICEPLANNER_MANUAL || `${HOME}/practiceplanner/docs/manual.html`,
   matchanalys: process.env.MATCHANALYS_MANUAL || `${HOME}/match_summary/docs/manual.html`,
 };
-const PDF = { tracker: 'tracker-manual.pdf', teambuilder: 'teambuilder-handbok.pdf', playbook: 'playbook-guide.pdf', matchanalys: 'matchanalys-manual.pdf' };
+const PDF = { tracker: 'tracker-manual.pdf', teambuilder: 'teambuilder-handbok.pdf', playbook: 'playbook-guide.pdf', practiceplanner: 'practiceplanner-manual.pdf', matchanalys: 'matchanalys-manual.pdf' };
 const CHROMIUM = '/opt/pw-browsers/chromium';
 const { skarmbilder } = require('./tracker_bilder.cjs');
 const { trackerSida } = require('./tracker_html.cjs');
@@ -80,7 +82,7 @@ async function trackerHtml() {
   fs.unlinkSync(tmp);
   fs.writeFileSync(path.join(__dirname, 'tracker.html'), withBar);
 
-  for (const k of ['teambuilder', 'playbook', 'matchanalys']) {
+  for (const k of ['teambuilder', 'playbook', 'practiceplanner', 'matchanalys']) {
     fs.writeFileSync(path.join(__dirname, k + '.html'), inject(fs.readFileSync(SRC[k], 'utf8'), PDF[k]));
   }
   for (const k of Object.keys(PDF)) console.log(k + '.html', fs.statSync(path.join(__dirname, k + '.html')).size, 'byte');

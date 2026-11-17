@@ -28,6 +28,8 @@ const SRC = {
 };
 const PDF = { tracker: 'tracker-manual.pdf', teambuilder: 'teambuilder-handbok.pdf', playbook: 'playbook-guide.pdf', matchanalys: 'matchanalys-manual.pdf' };
 const CHROMIUM = '/opt/pw-browsers/chromium';
+const { skarmbilder } = require('./tracker_bilder.cjs');
+const { trackerSida } = require('./tracker_html.cjs');
 
 const CSS = `
 .mbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;gap:8px;align-items:center;background:#1c1c1e;padding:10px 14px;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
@@ -58,39 +60,9 @@ function inject(html, pdf) {
 
 async function trackerHtml() {
   const browser = await chromium.launch(fs.existsSync(CHROMIUM) ? { executablePath: CHROMIUM } : {});
-  const page = await browser.newPage({ viewport: { width: 1180, height: 820 } });
-  await page.goto('file://' + path.resolve(SRC.tracker));
-  await page.fill('#loginName', 'Manual');            // appen kräver ett lag för att visa menyn
-  await page.click('#loginGo');
-  await page.waitForTimeout(400);
-  const { version, sections } = await page.evaluate(() => ({
-    version: document.getElementById('appVersion').textContent,
-    sections: [...document.querySelectorAll('#vHelp details.help-card')].map(d => ({
-      h: d.querySelector('.help-h').textContent.trim(), body: d.querySelector('.help-body').innerHTML })),
-  }));
+  const bilder = await skarmbilder(browser, SRC.tracker);
   await browser.close();
-  const esc = s => s.replace(/&/g, '&amp;');
-  return `<!DOCTYPE html><html lang="sv"><head><meta charset="utf-8"><title>Handboll Tracker – manual</title>
-<style>
-  @page { size: A4; margin: 16mm 16mm 18mm; }
-  :root { --accent: #b8860b; --ink: #1b1b1f; --grey: #5a5a63; --line: #e8dfc4; }
-  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; color: var(--ink); font: 400 10.5pt/1.5 "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  header { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 14px; }
-  .kicker { color: var(--accent); font-weight: 700; font-size: 9.5pt; letter-spacing: .1em; text-transform: uppercase; }
-  h1 { margin: 2px 0; font-size: 26pt; line-height: 1.1; }
-  header p { margin: 0; color: var(--grey); }
-  section { break-inside: avoid-page; margin: 0 0 6px; }
-  h2 { font-size: 14pt; color: var(--accent); margin: 18px 0 5px; break-after: avoid; }
-  p { margin: 0 0 8px; } ol, ul { margin: 0 0 8px; padding-left: 20px; } li { margin: 3px 0; }
-  b { font-weight: 700; }
-  footer { margin-top: 22px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--grey); font-size: 9pt; }
-</style></head><body>
-<header><div class="kicker">Handbollssviten</div><h1>Handboll Tracker</h1>
-<p>Manual · appversion ${version} · samma text som hjälpvyn ”Så funkar appen” i appen.</p></header>
-${sections.map(s => `<section><h2>${esc(s.h)}</h2>${s.body}</section>`).join('\n')}
-<footer>Tips: lägg till appen på hemskärmen för helskärmsläge utan webbläsarens kontroller.</footer>
-</body></html>`;
+  return trackerSida(bilder);
 }
 
 (async () => {
@@ -102,7 +74,8 @@ ${sections.map(s => `<section><h2>${esc(s.h)}</h2>${s.body}</section>`).join('\n
   const b2 = await chromium.launch(fs.existsSync(CHROMIUM) ? { executablePath: CHROMIUM } : {});
   const p2 = await b2.newPage();
   await p2.goto('file://' + tmp);
-  await p2.pdf({ path: path.join(__dirname, PDF.tracker), preferCSSPageSize: true, printBackground: true });
+  await p2.pdf({ path: path.join(__dirname, PDF.tracker), preferCSSPageSize: true, printBackground: true, displayHeaderFooter: true, headerTemplate: '<span></span>',
+    footerTemplate: '<div style="width:100%;font:8pt Arial,sans-serif;color:#777;padding:0 15mm;display:flex;justify-content:space-between"><span>Handboll Tracker · manual</span><span class="pageNumber"></span></div>' });
   await b2.close();
   fs.unlinkSync(tmp);
   fs.writeFileSync(path.join(__dirname, 'tracker.html'), withBar);

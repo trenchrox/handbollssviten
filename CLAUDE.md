@@ -88,7 +88,7 @@ Webbsidorna byggs med `node manualer/bygg.cjs`. Skriptet läser källorna från 
 
 | App | Webbsida och PDF här | Källa |
 | --- | --- | --- |
-| Tracker | `manualer/tracker.html`, `tracker-manual.pdf` | Genereras ur appens hjälpvy (`#vHelp`). Texten ändras i Tracker-appen. |
+| Tracker | `manualer/tracker.html`, `tracker-manual.pdf` | Texten genereras ur appens hjälpvy (`#vHelp`) och ändras i Tracker-appen. Skärmbilderna tas ur appen med påhittad exempeldata (`manualer/tracker_bilder.cjs`), och sidmallen med numrerade markeringar finns i `manualer/tracker_html.cjs`. Hjälprubriker som inte finns i mallen hamnar sist under "Mer i appen". |
 | Teambuilder | `manualer/teambuilder.html`, `teambuilder-handbok.pdf` | `docs/handbok.html` och `docs/teambuilder-handbok-v<N>.pdf` i `trenchrox/teambuilder-handboll`. Repot är privat, så kopian här är offentlig. |
 | Playbook | `manualer/playbook.html`, `playbook-guide.pdf` | `docs/guide.html` och `docs/Playbook-guide.pdf` i `trenchrox/playbook-handboll` (PDF med `node docs/make_guide_pdf.cjs`). |
 | Matchanalys | `manualer/matchanalys.html`, `matchanalys-manual.pdf` | `docs/manual.html` och `docs/matchanalys-manual.pdf` i `trenchrox/match_summary` (PDF med `node docs/make_manual_pdf.cjs`). |

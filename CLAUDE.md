@@ -127,3 +127,9 @@ Startsidan har två kort bredvid målvaktskompendiet, och **Manualer** ligger un
 - **Korskörning** (`korskorning.html`) är övningar där utespelare och målvakter tränar samtidigt, i samma utseende som kompendiet och Grunder och skott (vänsterspalt med **Hem**, **Ladda ner PDF** och länkar till de två handböckerna, ett kapitelark per rubrik). Texten bor i `Korskorning_utespelare_malvakter.md`. `node tools/bygg_korskorning.cjs` gör om den till `korskorning.html` och `Korskorning_utespelare_malvakter.pdf` (byggs ur sidan, A4 stående). CSS, märke, omslagsbild och skript hämtas vid bygget ur `malvaktskompendium_html_v1.html` och `utespelare.html`, så kör om skriptet när de ändras. Skriptet förstår bara det md-filen använder: rubriker, stycken, punktlistor, tabeller, fet och kursiv.
 
 Koderna i Korskörning (SK, FP, FS, HA, LK, PO, UK, SF och RE) pekar på övningar i Grunder och skott, målvaktskompendiet (Övningsbanken) och Placering i mål.
+
+## Gemensam ID- och datastandard
+
+`suite-schema.md` i repots rot är sviteövergripande ID- och dataformat (version 1, med tillägg 2026-11-18): ID-prefix, övningskoder, dataformat för träningsgrupper, övningar, pass och planbilder (`diagram@1`) samt export och import.
+
+- Filen är en **kopia** som ska vara lika i alla repon (PracticePlanner, Playbook, Tracker, Teambuilder, Match Summary och handbollssviten). Ändra den inte här för sig: uppdatera alla kopior samtidigt.

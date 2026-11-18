@@ -141,6 +141,10 @@ Startsidan har två kort bredvid målvaktskompendiet, och **Manualer** ligger un
 
 Koderna i Korskörning (SK, FP, FS, HA, LK, PO, UK, SF och RE) pekar på övningar i Grunder och skott, målvaktskompendiet (Övningsbanken) och Placering i mål.
 
+## Filma övningar
+
+`Filma_ovningar_tips.md` i repots rot har tips för hur man filmar en övning så att den går att analysera och beskriva, och vad som gäller för barn och integritet. Lägg aldrig filmer eller bilder med barn i det här repot, filerna är publika.
+
 ## Gemensam ID- och datastandard
 
 `suite-schema.md` i repots rot är sviteövergripande ID- och dataformat (version 1, med tillägg 2026-11-18): ID-prefix, övningskoder, dataformat för träningsgrupper, övningar, pass och planbilder (`diagram@1`) samt export och import.

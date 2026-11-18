@@ -12,6 +12,12 @@ Varje app bor kvar i sitt eget repo och har sin egen CLAUDE.md. Det som bara gä
 
 Detaljerna om varje apps inloggning och lagring står under "Inloggning" i respektive repos CLAUDE.md. Jämförelsen nedan bygger på dem.
 
+## LUGI:s designmall: ändras inte
+
+`malvaktskompendium_html_v1.html` är LUGI:s designmall och ändras aldrig i utseende, typsnitt eller layout. Det gäller också sidorna som är byggda i samma utseende: `utespelare.html` (Grunder och skott) och `korskorning.html`. Typsnitten där är Roboto Slab och Open Sans, och de ska vara kvar. Ändra bara innehåll när användaren ber om det.
+
+Typsnittsbyten (till exempel nya rubriktypsnitt) gäller bara apparna och startsidan, inte kompendiet och dess systersidor.
+
 ## Jämförelse mellan apparna: inloggning och lagring
 
 | | Tracker | Teambuilder | Playbook |

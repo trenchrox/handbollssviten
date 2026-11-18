@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<title>Teambuilder v19 – handbok</title>
+<title>Teambuilder v20 – handbok</title>
 <style>
   @page { size: A4; margin: 18mm 16mm 16mm; }
   * { box-sizing: border-box; }
@@ -86,7 +86,7 @@
 <div class="title">
   <h1>Team<b>builder</b> – handbok</h1>
   <div class="sub">Steg för steg: från tom app till utskrivna lag.</div>
-  <div class="meta">Version v19 · oktober 2026 · fristående HTML-app för ungdomshandboll</div>
+  <div class="meta">Version v20 · november 2026 · fristående HTML-app för ungdomshandboll</div>
 </div>
 
 <div class="toc">
@@ -112,7 +112,7 @@
 </div>
 
 <h2><span class="n">1</span>Installera och första starten</h2>
-<p class="lead">Teambuilder är <em>en enda fil</em>: <code>teambuilder-v19.html</code>. Inget konto, ingen
+<p class="lead">Teambuilder är <em>en enda fil</em>: <code>teambuilder-v20.html</code>. Inget konto, ingen
 installation, ingen internetanslutning. Appen körs i webbläsaren på den digitala enhet du väljer –
 dator, pekplatta eller telefon – och all data stannar på just den enheten.</p>
 
@@ -527,6 +527,7 @@ sparade sist vinner tyst.</p>
   <li>Gå till <b class="ui">Historik</b> och tryck på en post för att fälla ut lagen.</li>
   <li><b class="ui">Använd igen</b> lägger in samma grupper som dagens träningsgrupper. Den sparade
     posten lämnas orörd.</li>
+  <li><b class="ui">Exportera grupper</b> (på träningsposter) sparar indelningen som en fil till PracticePlanner.</li>
   <li>✕ tar bort en post.</li>
 </ol>
 <p>Historiken är också underlaget för parametern <b class="ui">Variera mot förra gången</b>.</p>
@@ -541,21 +542,30 @@ sparade sist vinner tyst.</p>
   <tr><td>Påminnelse om nivåuppdatering</td><td>1, 2, 3, 6 eller 12 månader. Markerar gamla bedömningar.</td></tr>
   <tr><td>Påminnelseintervall (Spelarsamtal)</td><td>3, 6 eller 12 månader (förvalt 6). Spelare som inte haft ett samtal så länge märks <b class="ui">Dags igen</b> i Spelarsamtal. Samtalsvyn är inte PIN-skyddad.</td></tr>
   <tr><td>Standardregler</td><td>Förvalda parametrar vid ny indelning.</td></tr>
-  <tr><td>Importera</td><td>Läs in en backup eller en delad trupp.</td></tr>
+  <tr><td>Exportera träningsgrupper</td><td>Senaste träningsindelningen som fil till PracticePlanner (avsnitt 17).</td></tr>
+  <tr><td>Importera</td><td>Läs in en backup, en delad trupp eller en laggranskning.</td></tr>
   <tr><td>Nollställ allt</td><td>Raderar all data på enheten. Kan inte ångras.</td></tr>
 </table>
-<p>Längst ner i menyn ligger <b class="ui">Exportera backup</b>, <b class="ui">Dela trupp</b>,
+<p>Längst ner i menyn ligger <b class="ui">Exportera backup</b>, <b class="ui">Dela trupp</b>, <b class="ui">Importera</b>,
 PIN-låset, <b class="ui">Hem</b> och växeln för mörkt/ljust läge – åtkomliga från alla vyer.
 <b class="ui">Hem</b> tar dig tillbaka till Handbollssvitens startsida (där alla appar ligger). Det är en vanlig länk
 till en annan webbadress: din trupp och dina inställningar påverkas inte, och ingen data följer med.</p>
 
 <h2><span class="n">17</span>Backup, delning och byte av enhet</h2>
-<p class="lead">Det finns två exporter, och skillnaden är viktig.</p>
+<p class="lead">Det finns tre exporter, och skillnaden är viktig.</p>
 <table>
   <tr><th>Export</th><th>Innehåller</th></tr>
   <tr><td>Exportera backup</td><td><b>Allt</b>: spelare, bedömningar, försvar, spelplats, anteckningar, relationer, spelarsamtal och mål, historik, cuper, inställningar och lagloggan. Din egen säkerhetskopia – dela den inte vidare.</td></tr>
   <tr><td>Dela trupp</td><td>Namn, position, hänthet och serienivå. <b>Inga</b> bedömningar, inga anteckningar och inga samtal. Den här kan du skicka till en annan tränare.</td></tr>
+  <tr><td>Exportera träningsgrupper</td><td>Bara gruppindelningen: gruppernas namn, nivå och spelarnas id. <b>Inga</b> namn, bedömningar, anteckningar, ledare eller PIN. Filen är till <b>PracticePlanner</b>, som kopplar id:na till sina egna spelare.</td></tr>
 </table>
+<p>Alla tre ligger i menyn och under <b class="ui">Inställningar › Backup &amp; delning</b>. <b class="ui">Importera</b> läser backuper, delade trupper och laggranskningar. En gruppfil läser du <em>inte</em> in här – öppna den i PracticePlanner under <b class="ui">Importera grupper</b>. Försöker du ändå får du ett besked om det, och ingenting ändras.</p>
+<h3>Träningsgrupper till PracticePlanner</h3>
+<ol>
+  <li>Dela in en träning under <b class="ui">Träning</b> och tryck <b class="ui">Exportera grupper</b> i resultatvyn. Du kan också exportera den senaste indelningen under <b class="ui">Inställningar</b>, eller en äldre under <b class="ui">Historik</b> (tryck på posten och sedan <b class="ui">Exportera grupper</b>).</li>
+  <li>Filen heter <code>teambuilder-grupper-ÅÅÅÅ-MM-DD.json</code>. Skicka den till PracticePlanner och välj <b class="ui">Importera grupper</b> i menyn där.</li>
+  <li>Varje grupp får ett eget id första gången den exporteras och behåller det när du slumpar om eller använder indelningen igen, så att PracticePlanner känner igen gruppen vecka efter vecka.</li>
+</ol>
 <h3>Rutin jag rekommenderar</h3>
 <ol>
   <li>Ta en <b class="ui">Exportera backup</b> efter varje gång du ändrat truppen, och åtminstone
@@ -610,7 +620,7 @@ läcka dem är en full backup – behandla den som en privat fil.</div>
 </table>
 
 <footer>
-  Teambuilder v19 · handbok · Uppdaterad oktober 2026 · All data lagras lokalt på enheten.
+  Teambuilder v20 · handbok · Uppdaterad november 2026 · All data lagras lokalt på enheten.
   Bedömningar visas aldrig i resultat, utskrifter eller exporter.
 </footer>
 

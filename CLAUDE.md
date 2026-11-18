@@ -86,6 +86,19 @@ Alla appar ligger på samma origin (`trenchrox.github.io`) och delar därför `l
 4. Ändra Matchanalys först (minst ändring), sedan Teambuilder och Tracker. Playbook sist, om alls.
 5. Varje app får en ny version enligt sina egna versionsregler, och ändringen provas i en webbläsare och på en iPad.
 
+## Beslut: rubriktypsnitt Outfit (införs senare)
+
+Big Shoulders upplevs som tungt och klumpigt. Valt som ersättare för rubriker och stora siffror: **Outfit**, vikt 600 (jämfört med Sen, Plus Jakarta Sans, DM Sans och Manrope; å, ä och ö finns i alla). Brödtexten är oförändrad (Instrument Sans).
+
+**Införs inte nu.** Bytet görs i samband med den gemensamma profilen (se "Förslag: gemensam profil"), så att apparna och startsidan får nytt utseende på en gång. Rör inga typsnitt i apparna före det.
+
+Omfattning: Tracker, Teambuilder, Playbook, PracticePlanner, Matchanalys och startsidan. **Inte** kompendiet och dess systersidor (se "LUGI:s designmall").
+
+Vid införandet:
+- Outfit är bredare än Big Shoulders. Rubrikstorlekarna ska minska till ungefär 80 % av dagens, och finjusteras per ställe. Testat på startsidan och PracticePlanner, inte på Tracker och Teambuilder än.
+- Typsnittet bäddas in som woff2, latin-delmängden (ca 14 kB per vikt), eftersom apparna ska fungera utan nätet.
+- Varje app får ny version enligt sina egna regler.
+
 ## Manualer
 
 Startsidans kort **Manualer** öppnar `manualer.html`, som listar en manual per app. Varje manual finns som webbsida (`manualer/<app>.html`, med en fast översta rad: **Hem**, **Manualer** och **Ladda ner PDF**) och som PDF (`manualer/<namn>.pdf`), på samma sätt som målvaktskompendiet. Källan bor i respektive apps repo och kopieras hit.
